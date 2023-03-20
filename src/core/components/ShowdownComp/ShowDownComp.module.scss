@@ -1,0 +1,19 @@
+.resizeHandlerStyle {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: nwse-resize;
+}
+.showdownResizable {
+  position: relative;
+  display: block;
+  border: 1px solid #ccc;
+  max-width: 100%;
+  overflow: hidden;
+  // resize: both;
+  // overflow: auto;
+}

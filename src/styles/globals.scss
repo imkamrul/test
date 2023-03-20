@@ -1,0 +1,272 @@
+@import 'classes';
+// @import '/node_modules/katex/dist/katex.min.css';
+
+body{
+  margin: 0;
+}
+
+.ant-layout-header.header {
+  z-index: 20;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 6%);
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 7px;
+}
+
+.logo {
+  width: 120px;
+
+  img {
+    height: 30px;
+    transform: translate(18px, -4px);
+  }
+}
+
+.nav-top-right {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+
+  //transform: translate(30px, 0);
+  .nav-item {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .user-name {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .ant-avatar-image {
+      background: #dfe1ef;
+    }
+
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+}
+
+.site-layout-background,
+.ant-layout-sider {
+  background: #fff;
+}
+
+.ant-menu-inline .ant-menu-item::after {
+  right: auto !important;
+  left: 0;
+}
+
+.ant-layout-sider {
+  padding-top: 70px;
+
+  .trigger {
+    position: absolute;
+    //top: 68px;
+    bottom: 10%;
+    //margin: auto;
+    right: -14px;
+    box-shadow: 0 0 5px 2px #a8acd070;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    color: gray;
+    z-index: 50;
+    transform: scale(0);
+    transition: 0.3s;
+    font-size: 15px;
+    height: 24px;
+  }
+
+  &:hover {
+    .trigger {
+      transform: scale(1);
+    }
+  }
+}
+
+.ant-breadcrumb {
+  margin: 10px 0 !important;
+  font-size: 12px !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+//gql-explorer
+.graphiql-container .doc-explorer-title-bar,
+.graphiql-container .history-title-bar {
+  height: auto !important;
+}
+
+.graphiql-container .doc-explorer-title-bar {
+  height: 44px !important;
+  background: #363e8b;
+  color: #fff;
+  top: 0px;
+  padding: 4px !important;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+}
+
+.graphiql-container .editorWrap .topBarWrap {
+  background: #363e8b;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.graphiql-container .editorWrap .topBar {
+  background: transparent;
+  border: none;
+}
+
+.graphiql-container .editorWrap .title,
+.graphiql-container .docExplorerHide {
+  color: #fff;
+}
+
+.graphiql-container .editorWrap .execute-button {
+  background: #fff;
+  border: none;
+  padding-top: 2px;
+  fill: #363e8b;
+}
+
+.graphiql-container .editorWrap .toolbar-button,
+.graphiql-container .editorWrap .docExplorerShow,
+.graphiql-container .editorWrap .historyShow {
+  background: #fff;
+  box-shadow: none;
+  color: #363e8b;
+  line-height: 16px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.graphiql-container .editorWrap .docExplorerShow:before {
+  border-color: #363e8b;
+  vertical-align: 1px;
+}
+
+//cards
+.ant-card {
+  //margin: 24px 0 !important;
+  //border-radius: 6px !important;
+}
+
+.ant-form {
+  gap: 16px;
+
+  //&.ant-form-vertical {
+  //  flex-direction: row;
+  //  display: flex;
+  //  align-items: flex-end;
+  //  flex-wrap: wrap;
+  //}
+
+  .ant-form-item {
+    margin-bottom: 10px;
+  }
+
+  .ant-form-item-label>label {
+    font-weight: 600;
+  }
+
+  .ant-form-vertical {
+    .ant-form-item-label {
+      padding: 0 0 4px;
+    }
+  }
+}
+
+.graphiql-container .docExplorerWrap .doc-explorer-contents {
+  border-top: 0;
+}
+
+//table settings
+.top-aligned-column {
+  .ant-table-tbody {
+    vertical-align: top;
+  }
+}
+
+//video
+.video-thumb-container {
+  img {
+    width: 100%;
+  }
+}
+
+.showdown-content {
+  overflow: auto;
+  padding: 10px;
+  height: 100%;
+}
+
+.ant-tag {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-tile-subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  span {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #777;
+  }
+}
+
+.formlist-file-upload {
+  input {
+    border-top: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.payment_link {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}
+
+.copiable_td {
+  display: flex;
+  overflow: hidden;
+  width: 200px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.ant-typography-copy {
+  position: absolute;
+  left: 0;
+}
