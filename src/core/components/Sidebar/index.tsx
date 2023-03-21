@@ -1,21 +1,23 @@
-import { PropTypes } from './Sidebar.types'
-import { Affix, Layout, Menu } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import React, { Fragment, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { MenuList } from './utils'
-const { Sider } = Layout
-const { SubMenu } = Menu
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Affix, Layout, Menu } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useState } from "react";
+import { PropTypes } from "./Sidebar.types";
+import { MenuList } from "./utils";
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 
-const Index = (props: PropTypes) => {
-  const router = useRouter()
-  const [collapsed, setCollapsed] = useState(false)
+const Sidebar = (props: PropTypes) => {
+  const router = useRouter();
+  const [collapsed, setCollapsed] = useState(false);
 
   const defaultKeys = {
-    selected: [router.pathname === '/' ? 'dashboard' : router.pathname.replace('/', '')],
-    open: ['dashboard'],
-  }
+    selected: [
+      router.pathname === "/" ? "dashboard" : router.pathname.replace("/", ""),
+    ],
+    open: ["dashboard"],
+  };
 
   return (
     <Sider
@@ -32,10 +34,10 @@ const Index = (props: PropTypes) => {
           defaultSelectedKeys={defaultKeys.selected}
           defaultOpenKeys={defaultKeys.open}
           style={{
-            height: 'calc(100vh - 70px)',
+            height: "calc(100vh - 70px)",
             borderRight: 0,
-            overflowX: 'hidden',
-            overflowY: 'scroll',
+            overflowX: "hidden",
+            overflowY: "scroll",
           }}
           className="scrollbar-hidden"
         >
@@ -56,14 +58,17 @@ const Index = (props: PropTypes) => {
               )}
             </Fragment>
           ))}
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setCollapsed(!collapsed),
-          })}
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: "trigger",
+              onClick: () => setCollapsed(!collapsed),
+            }
+          )}
         </Menu>
       </Affix>
     </Sider>
-  )
-}
+  );
+};
 
-export default Index
+export default Sidebar;

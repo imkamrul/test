@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import Topbar from '../components/TopBar'
-import Index from '../components/Sidebar'
-import { Breadcrumb, Layout, notification } from 'antd'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { useLocalStorage } from '@/hooks/localState'
+import { useLocalStorage } from "@/hooks/localState";
+import { Layout } from "antd";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Topbar from "../components/TopBar";
 
-const { Content } = Layout
+const { Content } = Layout;
 
 const Dashboard = ({ children }: any) => {
-  const [hasMounted, setHasMounted] = useState(false)
-  const [routes, setRoutes] = useState<string[]>([])
-  const [hlinks, setHlinks] = useState<string[]>([])
-  const router = useRouter()
+  const [hasMounted, setHasMounted] = useState(false);
+  const [routes, setRoutes] = useState<string[]>([]);
+  const [hlinks, setHlinks] = useState<string[]>([]);
+  console.log("hlinks :", hlinks);
+  const router = useRouter();
 
   const processBreadcum = () => {
-    let route = router.route.split('/')
-    let str = ''
-    let hlink: string[] = []
+    let route = router.route.split("/");
+    let str = "";
+    let hlink: string[] = [];
     route.forEach((i, index, arr) => {
-      if (i.charAt(0) == '[') {
-        i = i.slice(1)
-        i = i.slice(0, i.length - 1)
+      if (i.charAt(0) == "[") {
+        i = i.slice(1);
+        i = i.slice(0, i.length - 1);
         // console.log(i)
-        arr[index] = router.query[i] as string
+        arr[index] = router.query[i] as string;
       }
-      str = str + arr[index] + '/'
-      hlink.push(str)
-    })
-    route.shift()
-    hlink.shift()
-    setRoutes(route)
-    setHlinks(hlink)
-  }
+      str = str + arr[index] + "/";
+      hlink.push(str);
+    });
+    route.shift();
+    hlink.shift();
+    setRoutes(route);
+    setHlinks(hlink);
+  };
 
-  const [profile] = useLocalStorage('profile', null)
+  const [profile] = useLocalStorage("profile", null);
 
   useEffect(() => {
-    setHasMounted(true)
-    processBreadcum()
-  }, [])
+    setHasMounted(true);
+    processBreadcum();
+  }, []);
 
   // useEffect(() => {
   //   if (!profile) {
@@ -55,9 +55,9 @@ const Dashboard = ({ children }: any) => {
     <Layout>
       <Topbar />
       <Layout>
-        <Index />
-        <Layout style={{ padding: '62px 24px 24px 24px' }}>
-          <Breadcrumb>
+        <Sidebar />
+        <Layout style={{ padding: "62px 24px 24px 24px" }}>
+          {/* <Breadcrumb>
             <Breadcrumb.Item>
               <Link href="/dashboard" className="text-capitalize">
                 Dashboard
@@ -66,17 +66,17 @@ const Dashboard = ({ children }: any) => {
             {hlinks.map((link, i) => (
               <Breadcrumb.Item key={i}>
                 <Link href={link} className="text-capitalize">
-                    {routes && routes[i] && routes[i].replace(/-/g, ' ')}
+                  {routes && routes[i] && routes[i].replace(/-/g, " ")}
                 </Link>
               </Breadcrumb.Item>
             ))}
-          </Breadcrumb>
+          </Breadcrumb> */}
           <Content
             // className="site-layout-background"
             style={{
               padding: 0,
               margin: 0,
-              minHeight: 'calc(100vh - 124px)',
+              minHeight: "calc(100vh - 124px)",
             }}
           >
             {children}
@@ -84,7 +84,7 @@ const Dashboard = ({ children }: any) => {
         </Layout>
       </Layout>
     </Layout>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
