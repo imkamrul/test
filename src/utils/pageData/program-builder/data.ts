@@ -1,6 +1,6 @@
 import moment from 'moment'
-import { IFormBuilder } from '../../../components/Form/Form.types'
-import { TablePropTypes } from '../../../components/Table/Table.types'
+import { IFormBuilder } from '../../../core/components/Form/Form.types'
+import { TablePropTypes } from '../../../core/components/Table/Table.types'
 import { academicProgramClasses, examYear, programDurationTypes } from '../../commonStaticData'
 
 export const tableSettings: TablePropTypes = {

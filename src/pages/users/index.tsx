@@ -8,7 +8,7 @@ import {
   getEditFormSettings,
   getFormBuilderData,
   settings,
-} from "@/core/utils/pageData/users/data";
+} from "@/utils/pageData/users/data";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
 import { useEffect, useState } from "react";

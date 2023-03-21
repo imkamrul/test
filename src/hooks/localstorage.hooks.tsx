@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-// Hook
 export const useLocalStorage = (key: string, initialValue: any) => {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once

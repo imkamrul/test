@@ -1,7 +1,7 @@
 import { Card } from 'antd'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useLocalStorage } from '../../../hooks/localState'
+import { useLocalStorage } from '../../../hooks/localstorage.hooks'
 // import Logo from '../../components/Logo'
 import Styles from './Auth.module.scss'
 

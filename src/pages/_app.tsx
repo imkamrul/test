@@ -1,4 +1,4 @@
-import { notification } from 'antd'
+import {ConfigProvider, notification } from 'antd'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import '../styles/globals.scss'
@@ -7,8 +7,10 @@ import { capitalize } from 'lodash'
 import {
   getToken,
   // setCookieValue
-} from '@/core/utils/UserManager'
-import {useLocalStorage} from "@/hooks/localState";
+} from '@/utils/UserManager'
+import {useLocalStorage} from "@/hooks/localstorage.hooks";
+import { Provider } from 'react-redux'
+import store from "@/core/store";
 
 interface Types {
   Component: any
@@ -49,7 +51,11 @@ const MyApp = ({ Component, pageProps }: Types) => {
           type="text/javascript"
         />
       </Head>
-      <Component {...pageProps} />
+      <ConfigProvider>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+      </ConfigProvider>
     </>
   )
 }

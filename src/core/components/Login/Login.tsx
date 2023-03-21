@@ -7,8 +7,8 @@ import sendPostRequest from '../../../apis/sendPostRequest'
 import { loginSuccess } from '@/apis/authContainer'
 import { LOGIN_API_URL } from '@/apis/baseApi'
 import { useRouter } from 'next/router'
-import { useLocalStorage } from '@/hooks/localState'
-import { setCookieValue } from '../../utils/UserManager'
+import { useLocalStorage } from '@/hooks/localstorage.hooks'
+import { setCookieValue } from '../../../utils/UserManager'
 
 interface UserType {
   name: string

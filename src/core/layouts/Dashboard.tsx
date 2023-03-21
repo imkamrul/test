@@ -4,7 +4,7 @@ import Index from '../components/Sidebar'
 import { Breadcrumb, Layout, notification } from 'antd'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useLocalStorage } from '@/hooks/localState'
+import { useLocalStorage } from '@/hooks/localstorage.hooks'
 
 const { Content } = Layout
 

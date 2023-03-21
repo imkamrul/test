@@ -22,7 +22,7 @@ import Upload from './Upload'
 import s from './form.module.scss'
 import { IFormBuilder, IFormControl } from './Form.types'
 import { PlusOutlined, MinusOutlined, CopyOutlined, UploadOutlined } from '@ant-design/icons'
-import { copyTextToClipboard } from '../../utils'
+import { copyTextToClipboard } from '../../../utils'
 import TextEditor from './TextEditor'
 import ReactPlayer from 'react-player'
 // const API_URL = '';
