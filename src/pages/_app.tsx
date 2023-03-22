@@ -1,8 +1,11 @@
-import { useLocalStorage } from "@/hooks/localState";
+import { store } from "@/core/store";
+import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { ConfigProvider } from "antd";
 import { capitalize } from "lodash";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Provider } from "react-redux";
 import "../styles/globals.scss";
 
 interface Types {
@@ -45,7 +48,11 @@ const MyApp = ({ Component, pageProps }: Types) => {
           type="text/javascript"
         />
       </Head>
-      <Component {...pageProps} />
+      <ConfigProvider>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </ConfigProvider>
     </>
   );
 };

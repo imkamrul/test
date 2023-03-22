@@ -1,7 +1,7 @@
-@import 'classes';
+@import "classes";
 // @import '/node_modules/katex/dist/katex.min.css';
 
-body{
+body {
   margin: 0;
 }
 
@@ -187,7 +187,7 @@ body{
     margin-bottom: 10px;
   }
 
-  .ant-form-item-label>label {
+  .ant-form-item-label > label {
     font-weight: 600;
   }
 

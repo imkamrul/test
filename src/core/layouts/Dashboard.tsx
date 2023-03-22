@@ -1,4 +1,4 @@
-import { useLocalStorage } from "@/hooks/localState";
+import { useLocalStorage } from "@/hooks/localstorage.hooks";
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

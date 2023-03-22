@@ -1,13 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { BellOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { Layout, Menu, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useLocalStorage } from "../../../hooks/localState";
+import { useLocalStorage } from "../../../hooks/localstorage.hooks";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
 const { Header } = Layout;
 // import { logout } from '../../../apis/authContainer'
-// import { removeLoggedInUser } from "../../utils/UserManager";
 
 const Topbar = (props: PropTypes) => {
   const router = useRouter();

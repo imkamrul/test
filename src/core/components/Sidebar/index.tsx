@@ -26,15 +26,15 @@ const Sidebar = (props: PropTypes) => {
       collapsed={collapsed}
       theme="light"
       width={200}
-      className="site-layout-background"
+      className="site-layout-background "
     >
-      <Affix offsetTop={68}>
+      <Affix offsetTop={0}>
         <Menu
           mode="inline"
           defaultSelectedKeys={defaultKeys.selected}
           defaultOpenKeys={defaultKeys.open}
           style={{
-            height: "calc(100vh - 70px)",
+            height: "100vh",
             borderRight: 0,
             overflowX: "hidden",
             overflowY: "scroll",
