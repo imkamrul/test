@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CommonStateTypes } from "../types/CommonStateTypes";
+
+export interface CommonStateTypes {
+  isDrawerOpen: boolean;
+}
 
 // Define the initial state using that type
 const initialState = {

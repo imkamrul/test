@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { setIsDrawerOpen } from "@/core/store/slices/common.slice";
-import { RootStateTypes } from "@/core/store/types/RootStateTypes";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hooks";
 import { LeftOutlined } from "@ant-design/icons";
 import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
@@ -14,10 +13,9 @@ const style: React.CSSProperties = { background: "#0092ff", padding: "8px 0" };
 const Topbar = (props: PropTypes) => {
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
-  const dispatch = useDispatch();
-  const { isDrawerOpen } = useSelector(
-    (state: RootStateTypes) => state?.common
-  );
+  const dispatch = useAppDispatch();
+
+  const { isDrawerOpen } = useAppSelector((state) => state.common);
 
   function loggingOut() {
     // removeLoggedInUser();

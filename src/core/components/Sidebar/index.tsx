@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { RootStateTypes } from "@/core/store/types/RootStateTypes";
+import { useAppSelector } from "@/hooks/redux.hooks";
 import { Affix, Layout, Menu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
 import Styles from "./Sidebar.module.scss";
 import { PropTypes } from "./Sidebar.types";
 import { MenuList } from "./utils";
@@ -14,9 +13,7 @@ const { SubMenu } = Menu;
 const Sidebar = (props: PropTypes) => {
   const router = useRouter();
 
-  const { isDrawerOpen } = useSelector(
-    (state: RootStateTypes) => state?.common
-  );
+  const { isDrawerOpen } = useAppSelector((state) => state.common);
 
   const defaultKeys = {
     selected: [
