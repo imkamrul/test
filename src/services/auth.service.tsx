@@ -1,5 +1,5 @@
 import { post } from './api';
-import {jsonDecript, jsonEncript} from "@/utils/utils";
+import {jsonDecript, jsonEncript} from "@/utils";
 const urls = {
   getAll: 'user/all',
   addUser: 'user/add',
