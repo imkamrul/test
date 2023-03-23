@@ -1,7 +1,11 @@
 @import "../../../styles/_mixins";
+@import "../../../styles/_variables";
 .sidebar {
-  background: #070337 !important;
-
+  background: $darkBlue !important;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   & .logo {
     // height: 50px;
     padding: 30px 0;
@@ -19,12 +23,40 @@
       & img:first-child {
         display: block;
         width: 32px;
-        background: #000;
       }
       & img:last-child {
         // width: 150px;
         margin-left: 10px;
       }
+    }
+  }
+  & .sidebarBottom {
+    text-align: center;
+    padding-bottom: 80px;
+    opacity: 0;
+    visibility: hidden;
+    @include transition(0.2s);
+    @include scale(0);
+    &.sidebarBottomActive {
+      @include scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    & p {
+      color: $white;
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    & a {
+      background: $themeColor;
+      color: $white;
+      font-weight: 300;
+      font-style: italic;
+      padding: 12px 20px;
+      line-height: 1;
+      @include rounded;
     }
   }
 }

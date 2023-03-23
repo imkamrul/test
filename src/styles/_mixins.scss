@@ -5,3 +5,18 @@
   -ms-transition: all $duration ease-in-out;
   -o-transition: all $duration ease-in-out;
 }
+
+@mixin rounded($ratio: 5px) {
+  border-radius: $ratio;
+  -webkit-border-radius: $ratio;
+  -moz-border-radius: $ratio;
+  -ms-border-radius: $ratio;
+  -o-border-radius: $ratio;
+}
+@mixin scale($ratio: 1) {
+  transform: scale($ratio);
+  -webkit-transform: scale($ratio);
+  -moz-transform: scale($ratio);
+  -ms-transform: scale($ratio);
+  -o-transform: scale($ratio);
+}

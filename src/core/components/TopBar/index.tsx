@@ -5,6 +5,7 @@ import { LeftOutlined } from "@ant-design/icons";
 import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
+import ProfileDropdown from "../ProfileDropdown";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
 const { Header } = Layout;
@@ -51,7 +52,9 @@ const Topbar = (props: PropTypes) => {
               <LeftOutlined />
             </button>
           </Col>
-          <Col className="gutter-row" span={22}></Col>
+          <Col className="gutter-row d-flex justify-content-end" span={22}>
+            <ProfileDropdown />
+          </Col>
         </Row>
       </Header>
     </>
