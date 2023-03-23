@@ -1,5 +1,7 @@
-.topbar {
+@import "../../../styles/variables";
+.top_bar {
   position: fixed;
   z-index: 99;
-  // width: calc(100% - 200px) !important;
+  width: calc(100% - 240px) !important;
+  right: 0;
 }

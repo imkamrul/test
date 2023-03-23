@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { BellOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { Layout, Menu, message } from "antd";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
 import Styles from "./Topbar.module.scss";
@@ -29,12 +28,8 @@ const Topbar = (props: PropTypes) => {
   );
   return (
     <>
-      <Header className={"header " + Styles.topbar}>
-        <div className="logo">
-          <Link href="/" passHref={true}>
-            <img src="/logo.png" alt="" />
-          </Link>
-        </div>
+      <Header className={"header " + Styles.top_bar}>
+        <div className="navbar-left"></div>
         <div className="nav-top-right">
           <div className="nav-item">
             <QuestionCircleOutlined />

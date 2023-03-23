@@ -2,8 +2,8 @@ import { useLocalStorage } from "@/hooks/localstorage.hooks";
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar";
-import Topbar from "../components/TopBar";
+import Sidebar from "../../components/Sidebar";
+import Topbar from "../../components/TopBar";
 
 const { Content } = Layout;
 
@@ -53,35 +53,19 @@ const Dashboard = ({ children }: any) => {
 
   return (
     <Layout>
-      <Topbar />
-      <Layout>
-        <Sidebar />
-        <Layout style={{ padding: "62px 24px 24px 24px" }}>
-          {/* <Breadcrumb>
-            <Breadcrumb.Item>
-              <Link href="/dashboard" className="text-capitalize">
-                Dashboard
-              </Link>
-            </Breadcrumb.Item>
-            {hlinks.map((link, i) => (
-              <Breadcrumb.Item key={i}>
-                <Link href={link} className="text-capitalize">
-                  {routes && routes[i] && routes[i].replace(/-/g, " ")}
-                </Link>
-              </Breadcrumb.Item>
-            ))}
-          </Breadcrumb> */}
-          <Content
-            // className="site-layout-background"
-            style={{
-              padding: 0,
-              margin: 0,
-              minHeight: "calc(100vh - 124px)",
-            }}
-          >
-            {children}
-          </Content>
-        </Layout>
+      <Sidebar />
+      <Layout className="site-layout">
+        <Topbar />
+        <Layout.Content
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            minHeight: 280,
+            background: "red",
+          }}
+        >
+          {children}
+        </Layout.Content>
       </Layout>
     </Layout>
   );
