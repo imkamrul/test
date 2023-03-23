@@ -1,29 +1,30 @@
+@import "../../../styles/_mixins";
 .sidebar {
   background: #070337 !important;
-  width: 240px;
+
   & .logo {
     // height: 50px;
     padding: 30px 0;
-    background: gray;
 
     & a {
       display: flex;
       align-items: center;
-      justify-content: center;
       width: 100%;
-      text-align: center;
-
+      justify-content: center;
+      margin-left: -5px;
+      margin-right: -5px;
+      & img {
+        @include transition(0.2s);
+      }
       & img:first-child {
+        display: block;
         width: 32px;
+        background: #000;
       }
       & img:last-child {
-        width: 150px;
+        // width: 150px;
         margin-left: 10px;
       }
     }
   }
-}
-
-.sidebarMenu .ant-menu-item a {
-  color: #fff !important;
 }

@@ -1,16 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-import { BellOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { Layout, Menu, message } from "antd";
+import { setIsDrawerOpen } from "@/core/store/slices/common.slice";
+import { RootStateTypes } from "@/core/store/types/RootStateTypes";
+import { LeftOutlined } from "@ant-design/icons";
+import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
 const { Header } = Layout;
 // import { logout } from '../../../apis/authContainer'
-
+const style: React.CSSProperties = { background: "#0092ff", padding: "8px 0" };
 const Topbar = (props: PropTypes) => {
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
+  const dispatch = useDispatch();
+  const { isDrawerOpen } = useSelector(
+    (state: RootStateTypes) => state?.common
+  );
+
   function loggingOut() {
     // removeLoggedInUser();
 
@@ -26,18 +34,27 @@ const Topbar = (props: PropTypes) => {
       </Menu.Item>
     </Menu>
   );
+
+  const handleDrawerToggle = () => {
+    dispatch(setIsDrawerOpen(!isDrawerOpen));
+  };
+
   return (
     <>
-      <Header className={"header " + Styles.top_bar}>
-        <div className="navbar-left"></div>
-        <div className="nav-top-right">
-          <div className="nav-item">
-            <QuestionCircleOutlined />
-          </div>
-          <div className="nav-item">
-            <BellOutlined />
-          </div>
-        </div>
+      <Header
+        className={`header ${isDrawerOpen && "active"} ${Styles.top_bar}`}
+      >
+        <Row gutter={16} align="middle">
+          <Col span={2}>
+            <button
+              className={Styles.drawer_trigger_desktop}
+              onClick={handleDrawerToggle}
+            >
+              <LeftOutlined />
+            </button>
+          </Col>
+          <Col className="gutter-row" span={22}></Col>
+        </Row>
       </Header>
     </>
   );

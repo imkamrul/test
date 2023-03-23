@@ -1,6 +1,7 @@
 @import "classes";
 @import "variables";
 @import "default";
+@import "mixins";
 // @import '/node_modules/katex/dist/katex.min.css';
 
 .ant-layout-header.header {
@@ -8,10 +9,11 @@
   box-shadow: 0 4px 8px rgb(0 0 0 / 6%);
   background: #fff;
   position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 7px;
+  @include transition(0.2s);
+  width: calc(100% - 80px);
+  &.active {
+    width: calc(100% - 200px);
+  }
 }
 
 .logo {
