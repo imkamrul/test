@@ -1,16 +1,32 @@
-import { useLocalStorage } from "@/hooks/localState";
+import Dashboard from "@/core/layouts/Dashboard";
+import { store } from "@/core/store";
+import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { siteTheme } from "@/utils/siteTheme";
+import { ConfigProvider } from "antd";
 import { capitalize } from "lodash";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Provider } from "react-redux";
 import "../styles/globals.scss";
 
 interface Types {
   Component: any;
   pageProps: any;
 }
+interface LayoutList {
+  [key: string]: React.ComponentType<any>;
+}
+
+// ?Layout Object: For listing layout components
+const layoutList: LayoutList = {
+  dashboard: Dashboard,
+  // PublicLayout: PublicLayout,
+};
 
 const MyApp = ({ Component, pageProps }: Types) => {
+  // *layout  needs to be applied
+  const Layout = layoutList[Component.layout] || Dashboard;
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
 
@@ -45,7 +61,17 @@ const MyApp = ({ Component, pageProps }: Types) => {
           type="text/javascript"
         />
       </Head>
-      <Component {...pageProps} />
+      <ConfigProvider
+        theme={{
+          token: siteTheme,
+        }}
+      >
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
+      </ConfigProvider>
     </>
   );
 };

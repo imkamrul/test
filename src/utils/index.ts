@@ -1,4 +1,4 @@
-import { IOption } from '../components/Form/Form.types'
+import { IOption } from '../core/components/Form/Form.types'
 
 export const getFilterOptions = (commonData: any[]): any[] | undefined => {
   let DATA: any[] = []

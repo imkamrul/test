@@ -1,6 +1,6 @@
-import { TablePropTypes } from '../../../components/Table/Table.types'
-import { IFormBuilder } from '../../../components/Form/Form.types'
-import { roles, userTypes } from '../..'
+import { TablePropTypes } from '../../../core/components/Table/Table.types'
+import { IFormBuilder } from '../../../core/components/Form/Form.types'
+import { roles, userTypes } from '../../index'
 
 export const settings: TablePropTypes = {
   title: 'CMS Users',

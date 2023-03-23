@@ -1,0 +1,29 @@
+.sidebar {
+  background: #070337 !important;
+  width: 240px;
+  & .logo {
+    // height: 50px;
+    padding: 30px 0;
+    background: gray;
+
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+
+      & img:first-child {
+        width: 32px;
+      }
+      & img:last-child {
+        width: 150px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.sidebarMenu .ant-menu-item a {
+  color: #fff !important;
+}

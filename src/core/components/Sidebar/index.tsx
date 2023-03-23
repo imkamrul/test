@@ -1,8 +1,11 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Affix, Layout, Menu } from "antd";
+/* eslint-disable @next/next/no-img-element */
+import { RootStateTypes } from "@/core/store/types/RootStateTypes";
+import { Layout, Menu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
+import { useSelector } from "react-redux";
+import Styles from "./Sidebar.module.scss";
 import { PropTypes } from "./Sidebar.types";
 import { MenuList } from "./utils";
 const { Sider } = Layout;
@@ -12,6 +15,10 @@ const Sidebar = (props: PropTypes) => {
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
 
+  const { isDrawerOpen } = useSelector(
+    (state: RootStateTypes) => state?.common
+  );
+
   const defaultKeys = {
     selected: [
       router.pathname === "/" ? "dashboard" : router.pathname.replace("/", ""),
@@ -20,26 +27,34 @@ const Sidebar = (props: PropTypes) => {
   };
 
   return (
-    <Sider
-      trigger={null}
-      collapsible
-      collapsed={collapsed}
-      theme="light"
-      width={200}
-      className="site-layout-background"
-    >
-      <Affix offsetTop={68}>
+    <Sider collapsed={!isDrawerOpen}>
+      <div className={Styles.sidebar}>
+        <div className={Styles.logo}>
+          <Link href="/" passHref={true}>
+            <img
+              src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1679487567/fundednext-dashboard-v2/logo-icon-white.svg"
+              alt=""
+            />
+            {isDrawerOpen && (
+              <img
+                src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1679487068/fundednext-dashboard-v2/logo-white-text.svg"
+                alt=""
+              />
+            )}
+          </Link>
+        </div>
         <Menu
           mode="inline"
           defaultSelectedKeys={defaultKeys.selected}
+          theme="dark"
           defaultOpenKeys={defaultKeys.open}
           style={{
-            height: "calc(100vh - 70px)",
+            height: "100vh",
             borderRight: 0,
             overflowX: "hidden",
             overflowY: "scroll",
           }}
-          className="scrollbar-hidden"
+          className={`scrollbar-hidden ${Styles.sidebarMenu}`}
         >
           {MenuList.map((item) => (
             <Fragment key={item.key}>
@@ -58,15 +73,8 @@ const Sidebar = (props: PropTypes) => {
               )}
             </Fragment>
           ))}
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
         </Menu>
-      </Affix>
+      </div>
     </Sider>
   );
 };
