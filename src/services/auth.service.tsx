@@ -1,4 +1,5 @@
 import { post } from './api';
+import {jsonDecript, jsonEncript} from "@/utils/utils";
 const urls = {
   getAll: 'user/all',
   addUser: 'user/add',
@@ -44,17 +45,3 @@ export function getToken(){
   return localStorage.getItem('token');
 }
 
-export function strEncript(data: string) {
-  return btoa(data);
-}
-
-export function strDecript(data: string) {
-  return atob(data);
-}
-export function jsonEncript(data: any | any[]) {
-  return btoa(JSON.stringify(data));
-}
-
-export function jsonDecript(data: any | any[]) {
-  return JSON.parse(atob(data));
-}
