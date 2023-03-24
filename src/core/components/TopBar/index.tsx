@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { setIsDrawerOpen } from "@/core/store/slices/common.slice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hooks";
+import { useMediaQuery } from "@/hooks/responsive.hooks";
 import { LeftOutlined } from "@ant-design/icons";
 import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
@@ -14,6 +15,7 @@ const style: React.CSSProperties = { background: "#0092ff", padding: "8px 0" };
 const Topbar = (props: PropTypes) => {
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
+  const isLg: boolean = useMediaQuery("(min-width:992px)");
   const dispatch = useAppDispatch();
 
   const { isDrawerOpen } = useAppSelector((state) => state.common);
@@ -41,7 +43,9 @@ const Topbar = (props: PropTypes) => {
   return (
     <>
       <Header
-        className={`header ${isDrawerOpen && "active"} ${Styles.top_bar}`}
+        className={`header ${isDrawerOpen && isLg && "active"} ${
+          Styles.top_bar
+        }`}
       >
         <Row gutter={16} align="middle">
           <Col span={2}>

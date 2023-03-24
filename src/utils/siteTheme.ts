@@ -1,3 +1,6 @@
-export const siteTheme: object = {
+interface siteThemeType {
+  colorPrimary: string;
+}
+export const siteTheme: siteThemeType = {
   colorPrimary: "#635BFF",
 };
