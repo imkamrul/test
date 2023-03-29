@@ -26,11 +26,12 @@ export const MenuList = [
     ref: "/utilities",
   },
   {
-    key: "calendar",
+    key: "economy-calendar",
     title: "Economic Calendar",
     icon: <CalendarOutlined />,
     ref: "/economy-calendar",
   },
+
   {
     key: "Help",
     title: "Help",
@@ -40,7 +41,7 @@ export const MenuList = [
   // {
   //   key: "m1",
   //   title: "m1",
-  //   icon: <BookOutlined />,
+  //   icon: <QuestionCircleOutlined />,
   //   submenu: [
   //     {
   //       key: "sm1",

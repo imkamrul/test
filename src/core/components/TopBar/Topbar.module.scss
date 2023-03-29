@@ -1,4 +1,5 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 .top_bar {
   position: fixed;
   z-index: 99;
@@ -20,4 +21,22 @@
   &:hover {
     color: #635bff;
   }
+}
+
+.pageTitle {
+  width: calc(100% - 30px);
+  & h2 {
+    font-size: 18px;
+    color: $black;
+    padding-left: 10px;
+  }
+}
+
+.topbarButton {
+  background: transparent;
+  border: 1px solid $lightGray;
+  display: inline-block;
+  width: 38px;
+  padding: 8px 0;
+  @include rounded;
 }

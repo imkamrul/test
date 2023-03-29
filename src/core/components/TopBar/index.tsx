@@ -6,6 +6,7 @@ import { LeftOutlined } from "@ant-design/icons";
 import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
+import Bars from "../icons/Bars.icon";
 import ProfileDropdown from "../ProfileDropdown";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
@@ -47,17 +48,50 @@ const Topbar = (props: PropTypes) => {
           Styles.top_bar
         }`}
       >
-        <Row gutter={16} align="middle">
-          <Col span={2}>
-            <button
-              className={Styles.drawer_trigger_desktop}
-              onClick={handleDrawerToggle}
-            >
-              <LeftOutlined />
-            </button>
+        <Row
+          gutter={{
+            lg: 16,
+          }}
+          align="middle"
+        >
+          <Col xs={18} lg={2}>
+            {/* sidebar toggle menu pc  */}
+            {isLg && (
+              <button
+                className={Styles.drawer_trigger_desktop}
+                onClick={handleDrawerToggle}
+              >
+                <LeftOutlined />
+              </button>
+            )}
+            {/* sidebar toggle menu pc  */}
+            {!isLg && (
+              <div className="d-flex align-items-center">
+                <img
+                  src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680067866/fundednext-dashboard-v2/logo-icon-for-white-bg.svg"
+                  alt="logo-icon-for-white-bg"
+                  style={{
+                    width: "30px",
+                  }}
+                />
+                <div className={Styles.pageTitle}>
+                  <h2>Accounts Overview</h2>
+                </div>
+              </div>
+            )}
           </Col>
-          <Col className="gutter-row d-flex justify-content-end" span={22}>
-            <ProfileDropdown />
+
+          <Col className="gutter-row d-flex justify-content-end" xs={6} lg={22}>
+            {isLg && <ProfileDropdown />}
+
+            {!isLg && (
+              <button
+                className={Styles.topbarButton}
+                onClick={handleDrawerToggle}
+              >
+                <Bars />
+              </button>
+            )}
           </Col>
         </Row>
       </Header>

@@ -9,8 +9,14 @@
   box-shadow: 0 4px 8px rgb(0 0 0 / 6%);
   background: #fff;
   position: fixed;
+  width: 100%;
+  align-items: center;
+  // line-height: 1;
+  padding-inline: 24px;
   @include transition(0.2s);
-  width: calc(100% - 80px);
+  @include large {
+    width: calc(100% - 80px);
+  }
   &.active {
     width: calc(100% - 200px);
   }

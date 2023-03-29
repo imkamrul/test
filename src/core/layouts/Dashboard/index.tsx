@@ -58,7 +58,7 @@ const Dashboard = ({ children }: any) => {
         <Topbar />
         <Layout.Content
           style={{
-            margin: "24px 16px",
+            margin: "24px 0px",
             padding: 24,
             minHeight: 280,
             background: "transparent",
