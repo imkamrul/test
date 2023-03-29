@@ -1,4 +1,5 @@
 import Dashboard from "@/core/layouts/Dashboard";
+import Public from "@/core/layouts/Public";
 import { store } from "@/core/store";
 import { useLocalStorage } from "@/hooks/localstorage.hooks";
 import { siteTheme } from "@/utils/siteTheme";
@@ -21,7 +22,7 @@ interface LayoutList {
 // ?Layout Object: For listing layout components
 const layoutList: LayoutList = {
   dashboard: Dashboard,
-  // PublicLayout: PublicLayout,
+  PublicLayout: Public,
 };
 
 const MyApp = ({ Component, pageProps }: Types) => {
