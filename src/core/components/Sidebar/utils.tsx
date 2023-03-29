@@ -1,40 +1,58 @@
 import {
-  AppstoreOutlined,
-  BarsOutlined,
-  DashboardOutlined,
-  DollarCircleOutlined,
-  LineChartOutlined,
-  NotificationOutlined,
-  TransactionOutlined,
-  UserOutlined,
-  ShoppingCartOutlined,
-  LinkOutlined,
-  BookOutlined,
-} from '@ant-design/icons'
+  BoxPlotOutlined,
+  CalendarOutlined,
+  HomeOutlined,
+  QuestionCircleOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 
 export const MenuList = [
   {
-    key: 'dashboard',
-    title: 'Dashboard',
-    icon: <DashboardOutlined />,
-    ref: '/dashboard',
+    key: "home",
+    title: "Home",
+    icon: <HomeOutlined />,
+    ref: "/home",
   },
   {
-    key: 'm1',
-    title: 'm1',
-    icon: <BookOutlined />,
-    submenu: [
-      {
-        key: 'sm1',
-        ref: '/sm1',
-        title: 'sm1',
-      },
-      {
-        key: 'sm2',
-        ref: '/sm2',
-        title: 'sm2',
-      },
+    key: "orderList",
+    title: "Order List",
+    icon: <UnorderedListOutlined />,
+    ref: "/order-list",
+  },
+  {
+    key: "utilities",
+    title: "Utilities",
+    icon: <BoxPlotOutlined />,
+    ref: "/utilities",
+  },
+  {
+    key: "economy-calendar",
+    title: "Economic Calendar",
+    icon: <CalendarOutlined />,
+    ref: "/economy-calendar",
+  },
 
-    ],
-  }
-]
+  {
+    key: "Help",
+    title: "Help",
+    icon: <QuestionCircleOutlined />,
+    ref: "/help",
+  },
+  // {
+  //   key: "m1",
+  //   title: "m1",
+  //   icon: <QuestionCircleOutlined />,
+  //   submenu: [
+  //     {
+  //       key: "sm1",
+  //       ref: "/sm1",
+  //       title: "sm1",
+  //     },
+  //     {
+  //       key: "sm2",
+  //       ref: "/sm2",
+  //       title: "sm2",
+  //     },
+  //   ],
+  // },
+];

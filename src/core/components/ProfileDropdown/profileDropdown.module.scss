@@ -1,0 +1,19 @@
+@import "../../../styles/_variables";
+
+.profileDropDownWrapper {
+  color: $gray;
+  //   font-weight: 500;
+  font-size: 15px;
+  line-height: 1.4;
+  cursor: pointer;
+
+  & .avatarWrapper {
+    margin-right: 10px;
+  }
+}
+.menuItem {
+  color: $darkBlue !important;
+}
+.menuLink {
+  color: $gray !important;
+}

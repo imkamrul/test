@@ -1,69 +1,27 @@
-import { PropTypes } from './Sidebar.types'
-import { Affix, Layout, Menu } from 'antd'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import React, { Fragment, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { MenuList } from './utils'
-const { Sider } = Layout
-const { SubMenu } = Menu
+/* eslint-disable @next/next/no-img-element */
+import { useAppSelector } from "@/hooks/redux.hooks";
+import { useMediaQuery } from "@/hooks/responsive.hooks";
+import { Affix, Layout, Menu } from "antd";
+import { useRouter } from "next/router";
+import DesktopMenu from "./DesktopMenu";
+import MobileMenu from "./MobileMenu";
+import { PropTypes } from "./Sidebar.types";
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 
-const Index = (props: PropTypes) => {
-  const router = useRouter()
-  const [collapsed, setCollapsed] = useState(false)
+const Sidebar = (props: PropTypes) => {
+  const router = useRouter();
+  const { isDrawerOpen } = useAppSelector((state) => state.common);
+  const isLg: boolean = useMediaQuery("(min-width:992px)");
 
   const defaultKeys = {
-    selected: [router.pathname === '/' ? 'dashboard' : router.pathname.replace('/', '')],
-    open: ['dashboard'],
-  }
+    selected: [
+      router.pathname === "/" ? "home" : router.pathname.replace("/", ""),
+    ],
+    open: ["home"],
+  };
 
-  return (
-    <Sider
-      trigger={null}
-      collapsible
-      collapsed={collapsed}
-      theme="light"
-      width={200}
-      className="site-layout-background"
-    >
-      <Affix offsetTop={68}>
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={defaultKeys.selected}
-          defaultOpenKeys={defaultKeys.open}
-          style={{
-            height: 'calc(100vh - 70px)',
-            borderRight: 0,
-            overflowX: 'hidden',
-            overflowY: 'scroll',
-          }}
-          className="scrollbar-hidden"
-        >
-          {MenuList.map((item) => (
-            <Fragment key={item.key}>
-              {item.submenu ? (
-                <SubMenu key={item.key} icon={item.icon} title={item.title}>
-                  {item?.submenu?.map((sub) => (
-                    <Menu.Item key={sub.key}>
-                      <Link href={sub.ref}>{sub.title}</Link>
-                    </Menu.Item>
-                  ))}
-                </SubMenu>
-              ) : (
-                <Menu.Item key={item.key} icon={item.icon}>
-                  <Link href={item.ref}>{item.title}</Link>
-                </Menu.Item>
-              )}
-            </Fragment>
-          ))}
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setCollapsed(!collapsed),
-          })}
-        </Menu>
-      </Affix>
-    </Sider>
-  )
-}
+  return <Affix>{isLg ? <DesktopMenu /> : <MobileMenu />}</Affix>;
+};
 
-export default Index
+export default Sidebar;

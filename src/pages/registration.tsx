@@ -1,9 +1,9 @@
 // import { useMutation } from '@apollo/client'
 // import { USER_REGISTER } from '../core/graphQl/mutations/user.mutation'
-import { Form, Input, Button } from 'antd'
+import { Button, Form, Input } from "antd";
 // import { SetStateAction, useState } from 'react'
 // import { useRouter } from 'next/router'
-import Dashboard from '../core/layouts/Dashboard'
+import Dashboard from "../core/layouts/Dashboard";
 
 const Registration = () => {
   // const [formValues, setFormValues] = useState({})
@@ -37,7 +37,12 @@ const Registration = () => {
   return (
     <Dashboard>
       <div
-        style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh",
+          alignItems: "center",
+        }}
       >
         <Form
           name="basic"
@@ -53,7 +58,7 @@ const Registration = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your phone!',
+                message: "Please input your phone!",
               },
             ]}
           >
@@ -66,14 +71,14 @@ const Registration = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your password!',
+                message: "Please input your password!",
               },
             ]}
           >
             <Input.Password style={{ width: 300 }} />
           </Form.Item>
 
-          <Form.Item style={{ textAlign: 'right' }}>
+          <Form.Item style={{ textAlign: "right" }}>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
@@ -81,7 +86,7 @@ const Registration = () => {
         </Form>
       </div>
     </Dashboard>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;

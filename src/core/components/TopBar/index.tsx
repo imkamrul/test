@@ -1,19 +1,28 @@
-import { BellOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { Avatar, Dropdown, Layout, Menu, message } from "antd";
-import Link from "next/link";
+/* eslint-disable @next/next/no-img-element */
+import { setIsDrawerOpen } from "@/core/store/slices/common.slice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux.hooks";
+import { useMediaQuery } from "@/hooks/responsive.hooks";
+import { LeftOutlined } from "@ant-design/icons";
+import { Col, Layout, Menu, message, Row } from "antd";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../../hooks/localstorage.hooks";
+import Bars from "../icons/Bars.icon";
+import ProfileDropdown from "../ProfileDropdown";
 import Styles from "./Topbar.module.scss";
 import { PropTypes } from "./Topbar.types";
 const { Header } = Layout;
 // import { logout } from '../../../apis/authContainer'
-import { removeLoggedInUser } from "../../../utils/UserManager";
-
+const style: React.CSSProperties = { background: "#0092ff", padding: "8px 0" };
 const Topbar = (props: PropTypes) => {
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
+  const isLg: boolean = useMediaQuery("(min-width:992px)");
+  const dispatch = useAppDispatch();
+
+  const { isDrawerOpen } = useAppSelector((state) => state.common);
+
   function loggingOut() {
-    removeLoggedInUser();
+    // removeLoggedInUser();
 
     message.warning("Logging out !");
     // logout().then(() => {
@@ -27,48 +36,64 @@ const Topbar = (props: PropTypes) => {
       </Menu.Item>
     </Menu>
   );
+
+  const handleDrawerToggle = () => {
+    dispatch(setIsDrawerOpen(!isDrawerOpen));
+  };
+
   return (
     <>
-      <Header className={"header " + Styles.topbar}>
-        <div className="logo">
-          <Link href="/" passHref>
-            <img src="/logo.png" alt="" />
-          </Link>
-        </div>
-        <div className="nav-top-right">
-          <div className="nav-item">
-            <QuestionCircleOutlined />
-          </div>
-          <div className="nav-item">
-            <BellOutlined />
-          </div>
-          {profile && (
-            <div className="nav-item nav-user">
-              <Dropdown overlay={userDropdown}>
-                <div
+      <Header
+        className={`header ${isDrawerOpen && isLg && "active"} ${
+          Styles.top_bar
+        }`}
+      >
+        <Row
+          gutter={{
+            lg: 16,
+          }}
+          align="middle"
+        >
+          <Col xs={18} lg={2}>
+            {/* sidebar toggle menu pc  */}
+            {isLg && (
+              <button
+                className={Styles.drawer_trigger_desktop}
+                onClick={handleDrawerToggle}
+              >
+                <LeftOutlined />
+              </button>
+            )}
+            {/* sidebar toggle menu pc  */}
+            {!isLg && (
+              <div className="d-flex align-items-center">
+                <img
+                  src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680067866/fundednext-dashboard-v2/logo-icon-for-white-bg.svg"
+                  alt="logo-icon-for-white-bg"
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    gap: 8,
+                    width: "30px",
                   }}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <div className="user-name">{profile.name}</div>
-                  <Avatar
-                    src={
-                      <img
-                        src="https://joeschmoe.io/api/v1/random"
-                        style={{ width: 32 }}
-                      />
-                    }
-                  />
+                />
+                <div className={Styles.pageTitle}>
+                  <h2>Accounts Overview</h2>
                 </div>
-              </Dropdown>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </Col>
+
+          <Col className="gutter-row d-flex justify-content-end" xs={6} lg={22}>
+            {isLg && <ProfileDropdown />}
+
+            {!isLg && (
+              <button
+                className={Styles.topbarButton}
+                onClick={handleDrawerToggle}
+              >
+                <Bars />
+              </button>
+            )}
+          </Col>
+        </Row>
       </Header>
     </>
   );

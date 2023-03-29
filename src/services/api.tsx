@@ -1,6 +1,4 @@
-import { http } from '../helpers/httpService';
-import {AxiosRequestConfig} from "axios";
-// import { API_URL } from '../constants/defaultValues';
+import {http} from "@/helpers/http";
 
 export const getAll = (path: string, qParams?: any) => {
   const url = `${path}?${processQuery(qParams)}`;

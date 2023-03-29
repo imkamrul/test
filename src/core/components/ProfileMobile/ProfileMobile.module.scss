@@ -1,0 +1,17 @@
+@import "../../../styles/_variables";
+.profileWrapper {
+  text-align: center;
+  padding: 20px 0;
+  & h3 {
+    color: $white;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    margin-top: 10px;
+  }
+  & span.userEmail {
+    color: $themeColor;
+    display: block;
+    margin-top: 5px;
+  }
+}

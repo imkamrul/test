@@ -1,49 +1,59 @@
-import {ConfigProvider, notification } from 'antd'
-import Head from 'next/head'
-import { useEffect } from 'react'
-import '../styles/globals.scss'
-import { useRouter } from 'next/router'
-import { capitalize } from 'lodash'
-import {
-  getToken,
-  // setCookieValue
-} from '@/utils/UserManager'
-import {useLocalStorage} from "@/hooks/localstorage.hooks";
-import { Provider } from 'react-redux'
-import store from "@/core/store";
+import Dashboard from "@/core/layouts/Dashboard";
+import { store } from "@/core/store";
+import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { siteTheme } from "@/utils/siteTheme";
+import { ConfigProvider } from "antd";
+import { capitalize } from "lodash";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { Provider } from "react-redux";
+import "../styles/globals.scss";
 
 interface Types {
-  Component: any
-  pageProps: any
+  Component: any;
+  pageProps: any;
+}
+interface LayoutList {
+  [key: string]: React.ComponentType<any>;
 }
 
+// ?Layout Object: For listing layout components
+const layoutList: LayoutList = {
+  dashboard: Dashboard,
+  // PublicLayout: PublicLayout,
+};
+
 const MyApp = ({ Component, pageProps }: Types) => {
-  const router = useRouter()
-  const [profile] = useLocalStorage('profile', null)
+  // *layout  needs to be applied
+  const Layout = layoutList[Component.layout] || Dashboard;
+  const router = useRouter();
+  const [profile] = useLocalStorage("profile", null);
 
   function confirmRoute() {
-    let routes = '/login'
+    let routes = "/login";
     // if (profile && profile.role === 'admin') routes = '/dashboard'
     // if (profile && (profile.role === 'editor' || profile.role === 'developer')) routes = '/chapters'
     // if (profile && profile.role === 'marketing') routes = '/coupons'
     // if (profile && profile.role === 'sales') routes = '/students-communication'
     // else routes = '/login'
-    return router.pathname === '/' ? routes : router.pathname
+    return router.pathname === "/" ? routes : router.pathname;
   }
 
   useEffect(() => {
     router.push({
       pathname: confirmRoute(),
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <>
       <Head>
         <title>
-           CMS | {capitalize(router.pathname.replace(/-/g, ' ').replace('/', ''))}
+          Fundednext |{" "}
+          {capitalize(router.pathname.replace(/-/g, " ").replace("/", ""))}
         </title>
-        <meta name="description" content="A BUSINESS SOLUTION" />
+        <meta name="description" content="Fundednext user dashboard" />
         <link rel="icon" href="/favicon.ico" />
         <script
           async
@@ -51,13 +61,19 @@ const MyApp = ({ Component, pageProps }: Types) => {
           type="text/javascript"
         />
       </Head>
-      <ConfigProvider>
-          <Provider store={store}>
+      <ConfigProvider
+        theme={{
+          token: siteTheme,
+        }}
+      >
+        <Provider store={store}>
+          <Layout>
             <Component {...pageProps} />
-          </Provider>
+          </Layout>
+        </Provider>
       </ConfigProvider>
     </>
-  )
-}
+  );
+};
 
-export default MyApp
+export default MyApp;

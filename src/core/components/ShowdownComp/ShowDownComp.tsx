@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import { useEffect, useRef, useState } from 'react'
+// @ts-ignore
 import * as Showdown from 'showdown'
+// @ts-ignore
 import showdownKatex from 'showdown-katex'
 import Styles from './ShowDownComp.module.scss'
 
