@@ -1,0 +1,9 @@
+:where(.css-dev-only-do-not-override-1bbhx8s).ant-btn {
+  font-weight: 500;
+}
+:where(.css-dev-only-do-not-override-1bbhx8s).ant-btn.ant-btn-lg {
+  font-size: 16px;
+  height: auto;
+  padding: 10px 30px;
+  @include rounded;
+}
