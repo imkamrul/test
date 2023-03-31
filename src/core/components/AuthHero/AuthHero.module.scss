@@ -1,0 +1,17 @@
+.authHero {
+  background: url("/auth-hero.svg");
+  height: 266px;
+  & h3 {
+    position: absolute;
+    width: 399px;
+    height: 90px;
+    left: 1161px;
+    top: 88px;
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 150%;
+    color: #ffffff;
+  }
+}
