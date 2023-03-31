@@ -1,6 +1,5 @@
 import Filter from "../../core/components/Filter";
 import Table from "../../core/components/Table";
-import Dashboard from "../../core/layouts/Dashboard";
 
 import { IFormBuilder } from "@/core/components/Form/Form.types";
 import { TablePaginationTypes } from "@/core/components/Table/Table.types";
@@ -191,7 +190,7 @@ const Users = () => {
   });
 
   return (
-    <Dashboard>
+    <>
       <Filter
         onSearch={onSearch}
         // defaultValues={defaultfilterValues}
@@ -229,7 +228,7 @@ const Users = () => {
           loading={false}
         />
       </Drawer>
-    </Dashboard>
+    </>
   );
 };
 
