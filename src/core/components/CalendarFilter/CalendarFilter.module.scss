@@ -1,0 +1,67 @@
+.wrapper {
+  position: absolute;
+  width: 1200px;
+  height: 209px;
+  left: 540px;
+  top: 390px;
+  padding: 35px 30px;
+  background: #ffffff;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0px 2.13333px 36px rgba(217, 225, 255, 0.3);
+  border-radius: 5px;
+  display: flex;
+  & h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #636363;
+  }
+}
+
+.days {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.dayBtn {
+  background: #ffffff;
+  border: 0.6px solid #ebebeb;
+  box-shadow: 0px 2.13333px 78px rgba(193, 193, 193, 0.29);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3c3c3c;
+  padding: 11px 10px;
+  width: 125px;
+  text-align: center;
+}
+
+.impact {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.impactBtn {
+  background: #f3f3ff;
+  border: 1px solid #635bff;
+  box-shadow: 0px 4px 6px rgba(45, 44, 44, 0.03);
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.restriction {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.restrictionBtn {
+  background: #f4f4f4;
+  box-shadow: 0px 4px 6px rgba(45, 44, 44, 0.03);
+  border-radius: 210px;
+  padding: 5px 10px;
+}
