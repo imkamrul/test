@@ -1,5 +1,4 @@
-import { Col, Row } from "antd";
-import Checkbox from "antd/es/checkbox/Checkbox";
+import { Checkbox, Col, Row } from "antd";
 import React from "react";
 import Styles from "./CalendarFilter.module.scss";
 
@@ -49,36 +48,38 @@ const CalendarFilter = () => {
   ];
 
   return (
-    <Row className={Styles.wrapper} gutter={30}>
-      <Col lg={12}>
-        <h3>Days</h3>
-        <div className={Styles.days}>
-          {days.map((day) => (
-            <div className={Styles.dayBtn}>{day.name}</div>
-          ))}
-        </div>
-      </Col>
-      <Col lg={6}>
-        <h3>Impact</h3>
-        <div className={Styles.impact}>
-          {impacts.map((impact) => (
-            <div className={Styles.impactBtn}>
-              <Checkbox>{impact.name}</Checkbox>
-            </div>
-          ))}
-        </div>
-      </Col>
-      <Col lg={6}>
-        <h3>Restrictions</h3>
-        <div className={Styles.restriction}>
-          {restrictions.map((restriction) => (
-            <div className={Styles.restrictionBtn}>
-              <Checkbox>{restriction.name}</Checkbox>
-            </div>
-          ))}
-        </div>
-      </Col>
-    </Row>
+    <div className={Styles.wrapper}>
+      <Row gutter={30}>
+        <Col lg={12}>
+          <h3>Days</h3>
+          <div className={Styles.days}>
+            {days.map((day) => (
+              <div className={Styles.dayBtn}>{day.name}</div>
+            ))}
+          </div>
+        </Col>
+        <Col lg={6}>
+          <h3>Impact</h3>
+          <div className={Styles.impact}>
+            {impacts.map((impact) => (
+              <div className={Styles.impactBtn}>
+                <Checkbox>{impact.name}</Checkbox>
+              </div>
+            ))}
+          </div>
+        </Col>
+        <Col lg={6}>
+          <h3>Restrictions</h3>
+          <div className={Styles.restriction}>
+            {restrictions.map((restriction) => (
+              <div className={Styles.restrictionBtn}>
+                <Checkbox>{restriction.name}</Checkbox>
+              </div>
+            ))}
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 };
 
