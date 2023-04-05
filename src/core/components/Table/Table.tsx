@@ -139,7 +139,10 @@ const GenericTable = ({
 
   return (
     <Card>
-      <CardHeader title={settings.title}>
+      <CardHeader
+        title={settings.title}
+        icon="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680683630/fundednext-dashboard-v2/topup-reset-history-icon.svg"
+      >
         {settings.hasBulkOperation &&
           selectedRowKeys.length > 0 &&
           settings.bulkActions?.map((action) => (
@@ -173,16 +176,20 @@ const GenericTable = ({
           </Button>
         )}
 
-        <Dropdown
-          overlay={columnPicker}
-          trigger={["click"]}
-          placement="bottomRight"
-          arrow
-        >
-          <Button type="default" size="middle" icon={<FilterOutlined />}>
-            Columns <DownOutlined />
-          </Button>
-        </Dropdown>
+        {settings?.isColumnsDropdownVisible && (
+          <Dropdown
+            overlay={columnPicker}
+            trigger={["click"]}
+            placement="bottomRight"
+            arrow
+          >
+            <Button type="default" size="middle" icon={<FilterOutlined />}>
+              Columns <DownOutlined />
+            </Button>
+          </Dropdown>
+        )}
+
+        {settings?.headerWidget && settings?.headerWidget}
       </CardHeader>
 
       {/*<Table*/}
@@ -278,8 +285,8 @@ const GenericTable = ({
                         return value ? parseFloat(value).toFixed(2) : "0.00";
                       case "currency":
                         return value
-                          ? parseFloat(value).toFixed(2) + " BDT"
-                          : "0.00 BDT";
+                          ? "$" + parseFloat(value).toFixed(2)
+                          : "$0.00";
                       case "percentage":
                         return value ? parseFloat(value) + "%" : "0%";
                       case "image":
@@ -331,6 +338,13 @@ const GenericTable = ({
                               })}
                           </>
                         );
+                      case "component": {
+                        return (
+                          <>
+                            {col.generate && value ? col.generate(value) : "--"}
+                          </>
+                        );
+                      }
                       default:
                         return value ? value : "--";
                     }
