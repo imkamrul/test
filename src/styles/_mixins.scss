@@ -39,6 +39,11 @@ $double-xl: 1600px;
     @content;
   }
 }
+@mixin medium-down {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
 
 @mixin large {
   @media (min-width: #{$large-width}) {
