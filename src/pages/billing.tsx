@@ -1,5 +1,5 @@
+import { MyPlanHero, PricingContainer } from "@/core/components/MyPlan";
 import { Col, Layout, Row } from "antd";
-import MyPlanHero from "../core/components/MyPlan/MyPlanHero";
 const billing = () => {
   return (
     <>
@@ -15,6 +15,7 @@ const billing = () => {
           <Col span={4}></Col>
           <Col span={18}>
             <MyPlanHero />
+            <PricingContainer />
           </Col>
         </Row>
       </Layout.Content>

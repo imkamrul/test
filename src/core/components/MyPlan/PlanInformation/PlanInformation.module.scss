@@ -1,0 +1,28 @@
+.container {
+  padding: 0 0 0 40px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  border-bottom: 1px solid #ededed;
+  & p {
+    color: #777588;
+    font-size: 20px;
+    padding: 23px 0;
+  }
+}
+.pricing {
+  text-align: center;
+  padding-top: 62px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.total_price {
+  text-align: center;
+  padding-top: 18px;
+  font-size: 70px;
+  font-weight: 700;
+  color: #635bff;
+}

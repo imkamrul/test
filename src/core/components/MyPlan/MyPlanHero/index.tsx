@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import { useState } from "react";
 import Styles from "./MyPlanHero.module.scss";
-const Index = () => {
+export const MyPlanHero = () => {
   const btnList = ["Evaluation", "Express"];
   const test = "Evaluation";
   const [currentModel, setCurrentModel] = useState(btnList[0]);
@@ -33,5 +33,3 @@ const Index = () => {
     </Row>
   );
 };
-
-export default Index;
