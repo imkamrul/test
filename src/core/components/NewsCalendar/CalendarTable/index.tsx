@@ -1,8 +1,8 @@
 import React from "react";
 import Styles from "./CalendarTable.module.scss";
-import Table from "../Table";
+import Table from "../../Table";
 
-const CalendarTable = () => {
+export const CalendarTable = () => {
   const settings = {
     title: "",
     columns: [
@@ -52,5 +52,3 @@ const CalendarTable = () => {
     </div>
   );
 };
-
-export default CalendarTable;

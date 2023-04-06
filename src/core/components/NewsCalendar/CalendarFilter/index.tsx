@@ -2,7 +2,7 @@ import { Checkbox, Col, Row } from "antd";
 import React from "react";
 import Styles from "./CalendarFilter.module.scss";
 
-const CalendarFilter = () => {
+export const CalendarFilter = () => {
   const days = [
     {
       name: "Sunday",
@@ -82,5 +82,3 @@ const CalendarFilter = () => {
     </div>
   );
 };
-
-export default CalendarFilter;

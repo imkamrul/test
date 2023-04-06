@@ -45,7 +45,7 @@ const currency = [
   },
 ];
 
-const CurrencySection = () => {
+export const CurrencySection = () => {
   return (
     <div className={Styles.wrapper}>
       {currency.map((item) => (
@@ -57,5 +57,3 @@ const CurrencySection = () => {
     </div>
   );
 };
-
-export default CurrencySection;

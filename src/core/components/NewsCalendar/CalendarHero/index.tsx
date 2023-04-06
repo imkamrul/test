@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./CalendarHero.module.scss";
 
-const CalendarHero = () => {
+export const CalendarHero = () => {
   return (
     <div className={Styles.wrapper}>
       <div className={Styles.content}>
@@ -14,5 +14,3 @@ const CalendarHero = () => {
     </div>
   );
 };
-
-export default CalendarHero;
