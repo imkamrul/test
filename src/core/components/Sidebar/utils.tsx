@@ -26,10 +26,10 @@ export const MenuList = [
     ref: "/utilities",
   },
   {
-    key: "economy-calendar",
-    title: "Economic Calendar",
+    key: "news-calendar",
+    title: "News Calendar",
     icon: <CalendarOutlined />,
-    ref: "/economy-calendar",
+    ref: "/news-calendar",
   },
 
   {

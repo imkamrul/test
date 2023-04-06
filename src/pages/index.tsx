@@ -1,7 +1,7 @@
 import Dashboard from "../core/layouts/Dashboard";
 
 const Home = () => {
-  return <Dashboard />;
+  return <></>;
 };
 
 export default Home;
