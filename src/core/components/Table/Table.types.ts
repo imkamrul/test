@@ -50,7 +50,7 @@ export interface TableColumnTypes {
   width?: number | string;
   ellipsis?: boolean;
   editable?: boolean;
-  generate?: (text: any) => any;
+  generate?: (value: any) => any;
   align?: "left" | "right" | "center";
   // dataIndex?: number | string | null
 }

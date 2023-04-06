@@ -26,3 +26,9 @@ th.ant-table-cell {
   padding: 25px 0px !important;
   font-size: 16px;
 }
+
+:where(.css-dev-only-do-not-override-1bbhx8s).ant-btn-default {
+  background-color: #f6f5ff;
+  border-color: #eceaff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+}

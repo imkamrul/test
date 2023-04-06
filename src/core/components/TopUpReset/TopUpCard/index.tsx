@@ -15,7 +15,7 @@ interface TopUpCardProps {
   };
 }
 
-const TopUpCard = (props: TopUpCardProps) => {
+export const TopUpCard = (props: TopUpCardProps) => {
   const { title, title_icon, details, note, btn_text, requestType } =
     props.contents;
   return (
@@ -40,5 +40,3 @@ const TopUpCard = (props: TopUpCardProps) => {
     </>
   );
 };
-
-export default TopUpCard;
