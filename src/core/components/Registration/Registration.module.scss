@@ -1,7 +1,7 @@
 .loginForm {
   position: absolute;
   width: 613px;
-  height: 776px;
+  height: auto;
   left: 308px;
   top: 109px;
   background: #ffffff;
@@ -62,5 +62,30 @@
   & img {
     margin-top: 70px;
     margin-left: 170px;
+  }
+}
+
+.divider {
+  position: relative;
+  margin: 20px 0px 0px 0px;
+  color: rgba(128, 130, 133, 0.7);
+  font-size: 18px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    width: 40%;
+    height: 1px;
+    background-color: rgba(128, 130, 133, 0.25);
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
   }
 }

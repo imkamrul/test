@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+  background: linear-gradient(
+      90deg,
+      rgba(99, 91, 255, 0.95) 0%,
+      rgba(174, 170, 255, 0.95) 100%
+    ),
+    url("https://res.cloudinary.com/dvzadhnmh/image/upload//q_auto/f_auto/v1680240553/fundednext-dashboard-v2/calendar-hero");
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  padding: 90px;
+  flex-direction: column;
+  & h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+    color: #ffffff;
+  }
+  & p {
+    padding-top: 12px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #ffffff;
+  }
+}
