@@ -1,4 +1,4 @@
-import { MyPlanHero, PricingContainer } from "@/core/components/MyPlan";
+import MyPlanWrapper from "@/core/components/MyPlan/MyPlanWrapper";
 import { Col, Layout, Row } from "antd";
 const billing = () => {
   return (
@@ -14,8 +14,7 @@ const billing = () => {
         <Row>
           <Col span={4}></Col>
           <Col span={18}>
-            <MyPlanHero />
-            <PricingContainer />
+            <MyPlanWrapper />
           </Col>
         </Row>
       </Layout.Content>

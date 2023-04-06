@@ -1,13 +1,15 @@
 import { Col, Row } from "antd";
 import PlanInformation from "../PlanInformation/PlanInformation";
-import Platform from "../Plantform";
+import Platform from "../PlatForm";
 import { PricingCard } from "../PricingCard";
-
+import Styles from "./PricingContainer.module.scss";
 export const PricingContainer = () => {
   return (
     <>
-      <Platform />
-      <Row gutter={100}>
+      <Row gutter={100} className={Styles.pricingWrapper}>
+        <Col span={24}>
+          <Platform />
+        </Col>
         <Col span={11}>
           <PricingCard />
         </Col>
