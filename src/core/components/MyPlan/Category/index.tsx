@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import { useState } from "react";
 import Styles from "./Category.module.scss";
-const Category = () => {
+export const Category = () => {
   const [currentCategory, setCurrentCategory] = useState("");
   return (
     <Row>
@@ -32,5 +32,3 @@ const Category = () => {
     </Row>
   );
 };
-
-export default Category;

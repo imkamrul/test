@@ -1,11 +1,12 @@
 import { Col, Row } from "antd";
-import Category from "../Category";
+
+import { Category } from "../Category";
 import { MyPlanHero } from "../MyPlanHero";
 import PlanInformation from "../PlanInformation";
 import Platform from "../PlatForm";
 import { PricingCard } from "../PricingCard";
 import Styles from "./MyPlanWrapper.module.scss";
-const MyPlanWrapper = () => {
+export const MyPlanWrapper = () => {
   return (
     <>
       <Row className={Styles.myPlanContainer}>
@@ -18,7 +19,6 @@ const MyPlanWrapper = () => {
 
         <Row gutter={100} align={"middle"} className={Styles?.pricingContainer}>
           <Col span={12}>
-            {" "}
             <Category />
           </Col>
           <Col span={12}>
@@ -35,5 +35,3 @@ const MyPlanWrapper = () => {
     </>
   );
 };
-
-export default MyPlanWrapper;

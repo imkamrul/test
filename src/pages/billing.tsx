@@ -1,4 +1,5 @@
-import MyPlanWrapper from "@/core/components/MyPlan/MyPlanWrapper";
+import { BillingSideBar } from "@/core/components/Billing";
+import { MyPlanWrapper } from "@/core/components/MyPlan";
 import { Col, Layout, Row } from "antd";
 const billing = () => {
   return (
@@ -11,8 +12,10 @@ const billing = () => {
           minHeight: "100%",
         }}
       >
-        <Row>
-          <Col span={4}></Col>
+        <Row gutter={20}>
+          <Col span={4}>
+            <BillingSideBar />
+          </Col>
           <Col span={18}>
             <MyPlanWrapper />
           </Col>
