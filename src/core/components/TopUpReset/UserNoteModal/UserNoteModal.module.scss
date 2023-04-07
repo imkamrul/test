@@ -1,0 +1,9 @@
+.contentTitle {
+  font-size: 18px;
+}
+.UserNoteModal {
+  & .ant-modal-content {
+    padding: 0 !important;
+    background: #000;
+  }
+}

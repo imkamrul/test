@@ -1,5 +1,6 @@
 import { BillingSideBar } from "@/core/components/Billing";
 import { MyPlanWrapper } from "@/core/components/MyPlan";
+import CardIcon from "@/core/components/icons/Card.icon";
 import { Col, Layout, Row } from "antd";
 const billing = () => {
   return (
@@ -23,6 +24,13 @@ const billing = () => {
       </Layout.Content>
     </>
   );
+};
+billing.layoutSettings = {
+  pageHeader: {
+    title: "Billing-Payment Method",
+    icon: <CardIcon />,
+  },
+  contentWrapperStyle: {},
 };
 
 export default billing;

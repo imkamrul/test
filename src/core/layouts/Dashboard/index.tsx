@@ -1,17 +1,29 @@
+import PageHeader from "@/core/Molicules/PageHeader";
 import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { PageHeaderPropTypes } from "@/types/global.types";
 import { Layout } from "antd";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/TopBar";
 
 const { Content } = Layout;
 
-const Dashboard = ({ children }: any) => {
+interface DashboardLayoutPropsTypes {
+  children: any;
+  layoutSettings: {
+    pageHeader?: PageHeaderPropTypes;
+    contentWrapperStyle?: CSSProperties;
+  };
+}
+
+const Dashboard = (props: DashboardLayoutPropsTypes) => {
+  const { children, layoutSettings } = props;
+  console.log("contentWrapperStyle :", layoutSettings?.contentWrapperStyle);
   const [hasMounted, setHasMounted] = useState(false);
   const [routes, setRoutes] = useState<string[]>([]);
   const [hlinks, setHlinks] = useState<string[]>([]);
-  console.log("hlinks :", hlinks);
+
   const router = useRouter();
 
   const processBreadcum = () => {
@@ -58,12 +70,16 @@ const Dashboard = ({ children }: any) => {
         <Topbar />
         <Layout.Content
           style={{
-            margin: "24px 0px",
-            padding: 24,
+            margin: "0",
+            padding: "100px 30px",
             minHeight: 280,
             background: "transparent",
+            ...layoutSettings?.contentWrapperStyle,
           }}
         >
+          {layoutSettings?.pageHeader && (
+            <PageHeader options={layoutSettings?.pageHeader} />
+          )}
           {children}
         </Layout.Content>
       </Layout>

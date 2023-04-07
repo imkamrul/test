@@ -1,0 +1,22 @@
+.wrapper {
+  background: linear-gradient(
+      90deg,
+      rgba(99, 91, 255, 0.95) 0%,
+      rgba(174, 170, 255, 0.95) 100%
+    ),
+    url("https://res.cloudinary.com/dvzadhnmh/image/upload/q_auto/f_auto/v1680759681/fundednext-dashboard-v2/help-hero-bg");
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  & h3 {
+    padding-top: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+    text-align: center;
+    color: #ffffff;
+  }
+}

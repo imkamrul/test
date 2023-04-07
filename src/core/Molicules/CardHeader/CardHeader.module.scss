@@ -1,4 +1,20 @@
 .antCardHeadCustom {
   margin: -24px -24px 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 0 !important;
+  box-shadow: 0px 2.13333px 90.6667px rgba(217, 225, 255, 0.59);
+  position: relative;
+  z-index: 999;
+  & img {
+    max-width: 25px;
+  }
+  & .cardHeadWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+  }
+  & .cardHeadTitle {
+    font-size: 20px !important;
+    padding-left: 10px;
+  }
 }

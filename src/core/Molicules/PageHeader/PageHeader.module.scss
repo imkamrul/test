@@ -1,0 +1,17 @@
+@import "../../../styles/_variables";
+.pageHeaderWrapper {
+  & h2 {
+    line-height: 1;
+    margin-top: -2px;
+    font-size: 24px;
+    font-weight: 500;
+    color: $black;
+    padding-left: 20px;
+  }
+  & svg {
+    fill: $black;
+    & path {
+      fill: $black;
+    }
+  }
+}
