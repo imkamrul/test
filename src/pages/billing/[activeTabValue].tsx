@@ -2,14 +2,18 @@ import { BillingSideBar } from "@/core/components/Billing";
 import { MyPlanWrapper } from "@/core/components/MyPlan";
 import CardIcon from "@/core/components/icons/Card.icon";
 import { Col, Layout, Row } from "antd";
+import { useRouter } from "next/router";
 
 const ActiveTabValue = () => {
+  const router = useRouter();
+  console.log("router :", router?.query);
+
   return (
     <>
       <Layout.Content
         className="site-layout-background"
         style={{
-          padding: 24,
+          padding: "40px 0",
           margin: 0,
           minHeight: "100%",
         }}

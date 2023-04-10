@@ -8,7 +8,7 @@ const billing = () => {
       <Layout.Content
         className="site-layout-background"
         style={{
-          padding: 24,
+          padding: "40px 0",
           margin: 0,
           minHeight: "100%",
         }}
