@@ -19,7 +19,7 @@ interface DashboardLayoutPropsTypes {
 
 const Dashboard = (props: DashboardLayoutPropsTypes) => {
   const { children, layoutSettings } = props;
-  console.log("contentWrapperStyle :", layoutSettings.contentWrapperStyle);
+
   const [hasMounted, setHasMounted] = useState(false);
   const [routes, setRoutes] = useState<string[]>([]);
   const [hlinks, setHlinks] = useState<string[]>([]);
@@ -74,7 +74,7 @@ const Dashboard = (props: DashboardLayoutPropsTypes) => {
             padding: "100px 30px",
             minHeight: 280,
             background: "transparent",
-            ...layoutSettings.contentWrapperStyle,
+            ...(layoutSettings?.contentWrapperStyle || ""),
           }}
         >
           {layoutSettings?.pageHeader && (

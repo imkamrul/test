@@ -1,8 +1,10 @@
 @import "classes";
 @import "variables";
+@import "responsives";
 @import "mixins";
 @import "default";
 @import "modifications";
+
 // @import '/node_modules/katex/dist/katex.min.css';
 
 .ant-layout-header.header {
@@ -71,39 +73,6 @@
   left: 0;
 }
 
-// .ant-layout-sider {
-//   padding-top: 40px;
-
-//   .trigger {
-//     position: absolute;
-//     //top: 68px;
-//     bottom: 10%;
-//     //margin: auto;
-//     right: -14px;
-//     box-shadow: 0 0 5px 2px #a8acd070;
-//     background: white;
-//     border-radius: 50%;
-//     padding: 5px;
-//     color: gray;
-//     z-index: 50;
-//     transform: scale(0);
-//     transition: 0.3s;
-//     font-size: 15px;
-//     height: 24px;
-//   }
-
-//   &:hover {
-//     .trigger {
-//       transform: scale(1);
-//     }
-//   }
-// }
-
-// .ant-breadcrumb {
-//   margin: 10px 0 !important;
-//   font-size: 12px !important;
-// }
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
@@ -114,4 +83,11 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   /* Firefox */
+}
+
+// public layout styles
+.publicLayout {
+  background: $lightPurple;
+  min-height: 100vh;
+  padding-top: 120px;
 }

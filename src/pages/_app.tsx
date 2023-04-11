@@ -44,9 +44,9 @@ const MyApp = ({ Component, pageProps }: Types) => {
   }
 
   useEffect(() => {
-    router.push({
-      pathname: confirmRoute(),
-    });
+    // router.push({
+    //   pathname: confirmRoute(),
+    // });
   }, []);
 
   return (

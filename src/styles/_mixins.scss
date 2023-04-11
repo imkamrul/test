@@ -74,3 +74,10 @@ $double-xl: 1600px;
   -ms-transform: scale($ratio);
   -o-transform: scale($ratio);
 }
+
+@mixin cardStyle() {
+  background: $white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: $cardShadow;
+}
