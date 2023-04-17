@@ -18,7 +18,7 @@ export const MenuList = [
     key: "billing",
     title: "Billing",
     icon: <CreditCardOutlined />,
-    ref: "/billing",
+    ref: "/billing/my-plan",
   },
   {
     key: "orderList",

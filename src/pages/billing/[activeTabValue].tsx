@@ -1,12 +1,14 @@
 import { BillingSideBar } from "@/core/components/Billing";
 import { MyPlanWrapper } from "@/core/components/MyPlan";
+import PaymentHistoryWrapper from "@/core/components/PaymentHistory/PaymentHistoryWrapper";
 import CardIcon from "@/core/components/icons/Card.icon";
 import { Col, Layout, Row } from "antd";
 import { useRouter } from "next/router";
 
-const ActiveTabValue = () => {
+const Index = () => {
   const router = useRouter();
-  console.log("router :", router?.query);
+  const { activeTabValue } = router?.query;
+  console.log("activeTabValue :", activeTabValue);
 
   return (
     <>
@@ -23,18 +25,19 @@ const ActiveTabValue = () => {
             <BillingSideBar />
           </Col>
           <Col span={18}>
-            <MyPlanWrapper />
+            {activeTabValue === "my-plan" && <MyPlanWrapper />}
+            {activeTabValue === "payment-history" && <PaymentHistoryWrapper />}
           </Col>
         </Row>
       </Layout.Content>
     </>
   );
 };
-ActiveTabValue.layoutSettings = {
+Index.layoutSettings = {
   pageHeader: {
     title: "Billing-Payment Method",
     icon: <CardIcon />,
   },
   contentWrapperStyle: {},
 };
-export default ActiveTabValue;
+export default Index;

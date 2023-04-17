@@ -33,6 +33,7 @@ interface PropTypes {
   scrollX?: number;
   className?: string;
   topAligned?: boolean;
+  title?: boolean;
 }
 
 const GenericTable = ({
@@ -139,58 +140,57 @@ const GenericTable = ({
 
   return (
     <Card>
-      <CardHeader
-        title={settings.title}
-        icon="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680683630/fundednext-dashboard-v2/topup-reset-history-icon.svg"
-      >
-        {settings.hasBulkOperation &&
-          selectedRowKeys.length > 0 &&
-          settings.bulkActions?.map((action) => (
+      {settings.title && (
+        <CardHeader title={settings.title} icon={""}>
+          {settings.hasBulkOperation &&
+            selectedRowKeys.length > 0 &&
+            settings.bulkActions?.map((action) => (
+              <Button
+                style={{ marginRight: "8px" }}
+                type={action.btnType}
+                danger={action.isDanger}
+                size="middle"
+                onClick={() => {
+                  settings.bulkActionEvent &&
+                    settings.bulkActionEvent(action.action, selectedRowKeys);
+                }}
+                key={action.action}
+              >
+                {action.title}
+              </Button>
+            ))}
+
+          {settings?.hasAddNewBtn && (
             <Button
               style={{ marginRight: "8px" }}
-              type={action.btnType}
-              danger={action.isDanger}
+              type="primary"
               size="middle"
               onClick={() => {
-                settings.bulkActionEvent &&
-                  settings.bulkActionEvent(action.action, selectedRowKeys);
+                settings?.addNewBtnEvent && settings.addNewBtnEvent();
+                settings?.addNewBtnUrl && router.push(settings.addNewBtnUrl);
               }}
-              key={action.action}
+              disabled={settings?.disableAddNewBtn}
             >
-              {action.title}
+              {settings?.addNewBtnTitle ? settings.addNewBtnTitle : "Add New"}
             </Button>
-          ))}
+          )}
 
-        {settings?.hasAddNewBtn && (
-          <Button
-            style={{ marginRight: "8px" }}
-            type="primary"
-            size="middle"
-            onClick={() => {
-              settings?.addNewBtnEvent && settings.addNewBtnEvent();
-              settings?.addNewBtnUrl && router.push(settings.addNewBtnUrl);
-            }}
-            disabled={settings?.disableAddNewBtn}
-          >
-            {settings?.addNewBtnTitle ? settings.addNewBtnTitle : "Add New"}
-          </Button>
-        )}
+          {settings?.isColumnsDropdownVisible && (
+            <Dropdown
+              overlay={columnPicker}
+              trigger={["click"]}
+              placement="bottomRight"
+              arrow
+            >
+              <Button type="default" size="middle" icon={<FilterOutlined />}>
+                Columns <DownOutlined />
+              </Button>
+            </Dropdown>
+          )}
 
-        {settings?.isColumnsDropdownVisible && (
-          <Dropdown
-            overlay={columnPicker}
-            trigger={["click"]}
-            placement="bottomRight"
-            arrow
-          >
-            <Button type="default" size="middle" icon={<FilterOutlined />}>
-              Columns <DownOutlined />
-            </Button>
-          </Dropdown>
-        )}
-
-        {settings?.headerWidget && settings?.headerWidget}
-      </CardHeader>
+          {settings?.headerWidget && settings?.headerWidget}
+        </CardHeader>
+      )}
 
       {/*<Table*/}
       {/*    size="small"*/}

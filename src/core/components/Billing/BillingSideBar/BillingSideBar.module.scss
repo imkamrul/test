@@ -1,4 +1,5 @@
 .container {
+  overflow-x: hidden;
   background: #ffffff;
   box-shadow: 0px 2.13333px 150px rgba(217, 225, 255, 0.77);
   padding: 0;
@@ -19,7 +20,14 @@
     &:hover {
       background: #f4f3ff;
       border-left: 3px solid #070337;
+      font-weight: 500;
     }
+  }
+}
+.activeMenu {
+  & a {
+    border-left: 3px solid #070337;
+    font-weight: 500;
   }
 }
 .title {
