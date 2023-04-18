@@ -1,16 +1,28 @@
-import { PlanState, setModel } from "@/core/store/slices/myPlan.slice";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { AppDispatch } from "@/core/store";
+import {
+  PlanState,
+  fetchMyPlan,
+  setModel,
+} from "@/core/store/slices/myPlan.slice";
 import { Col, Row } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Styles from "./MyPlanHero.module.scss";
 export const MyPlanHero = () => {
-  const dispatch = useDispatch();
-  const btnList = ["Evaluation", "Express"];
-  const { model } = useSelector((state: { plan: PlanState }) => state.plan);
+  const dispatch = useDispatch<AppDispatch>();
+  const btnList = [
+    { name: "Evaluation", description: "evaluation fund" },
+    { name: "Express", description: "express fund" },
+  ];
+  const { model, allPlan } = useSelector(
+    (state: { plan: PlanState }) => state.plan
+  );
 
   useEffect(() => {
-    // dispatch(fetchMyPlan());
-  }, []);
+    !allPlan && dispatch(fetchMyPlan());
+  }, [model]);
+
   return (
     <Row className={Styles?.sectionBg}>
       <Col span={24}>
@@ -20,11 +32,15 @@ export const MyPlanHero = () => {
         {btnList?.map((item, idx) => {
           return (
             <button
-              onClick={() => dispatch(setModel(item))}
+              onClick={() => dispatch(setModel(item?.description))}
               key={idx}
-              className={model === item ? Styles?.activeBtn : ""}
+              className={
+                model?.toLowerCase().includes(item?.name?.toLowerCase())
+                  ? Styles?.activeBtn
+                  : ""
+              }
             >
-              {item}
+              {item?.name}
             </button>
           );
         })}

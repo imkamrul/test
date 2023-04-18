@@ -1,10 +1,11 @@
-import { PlanState, setCategory } from "@/core/store/slices/myPlan.slice";
+import { PlanState, setModel } from "@/core/store/slices/myPlan.slice";
 import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import Styles from "./Category.module.scss";
 export const Category = () => {
   const dispatch = useDispatch();
-  const { category } = useSelector((state: { plan: PlanState }) => state.plan);
+  const { model } = useSelector((state: { plan: PlanState }) => state.plan);
+
   return (
     <Row>
       <Col span={24}>
@@ -16,17 +17,17 @@ export const Category = () => {
       <Col>
         <button
           className={`${Styles.btnStyle} ${
-            category === "consistency" && Styles.activeBtn
+            model === "express fund" && Styles.activeBtn
           }`}
-          onClick={() => dispatch(setCategory("consistency"))}
+          onClick={() => dispatch(setModel("express fund"))}
         >
           Consistency
         </button>
         <button
           className={`${Styles.btnStyle} ${
-            category === "non-consistency" && Styles.activeBtn
+            model === "express nca fund" && Styles.activeBtn
           }`}
-          onClick={() => dispatch(setCategory("non-consistency"))}
+          onClick={() => dispatch(setModel("express nca fund"))}
         >
           Non Consistency
         </button>

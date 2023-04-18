@@ -1,34 +1,34 @@
+import { SinglePlanType } from "@/core/components/MyPlan/PricingCard/PricingCard.type";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // Define a type for the slice state
 export interface PlanState {
   model: string;
-  category: string | null;
+
   platform: string | null;
-  allPlan: object | null;
+  allPlan: Array<object> | null;
   selectedModelPlan: Array<object> | null;
+  currentPlan: SinglePlanType | null;
   isLoading: boolean;
 }
 
 // Define the initial state using that type
 const initialState: PlanState = {
-  model: "Evaluation",
-  category: null,
+  model: "evaluation fund",
   platform: "mt4",
   allPlan: null,
+  currentPlan: null,
   selectedModelPlan: null,
   isLoading: false,
 };
-export const fetchMyPlan = createAsyncThunk("fetchMyPlan", async () => {
-  const res = await fetch(`${process.env.API_BASE_URL}/api/v1/me`, {
-    // headers: { Authorization: `Bearer ${token}` },
-  });
+export const fetchMyPlan = createAsyncThunk("my/plan", async (thunkApi) => {
+  const res = await fetch(
+    `${"https://backend-evalution.fundednext.com"}/api/v1/plans`
+  );
 
-  const {
-    data: { user },
-  } = await res.json();
+  const { data } = await res.json();
 
-  return user;
+  return data;
 });
 export const planSlice = createSlice({
   name: "plan",
@@ -38,14 +38,15 @@ export const planSlice = createSlice({
     setModel: (state, action: PayloadAction<string>) => {
       state.model = action.payload;
     },
-    setCategory: (state, action: PayloadAction<string>) => {
-      state.category = action.payload;
-    },
+
     setPlatForm: (state, action: PayloadAction<string>) => {
       state.platform = action.payload;
     },
     setSelectedModelPlan: (state, action) => {
-      state.platform = action.payload;
+      state.selectedModelPlan = action.payload;
+    },
+    setCurrentPlan: (state, action) => {
+      state.currentPlan = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -58,12 +59,13 @@ export const planSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchMyPlan.rejected, (state) => {
+        state.allPlan = null;
         state.isLoading = false;
       });
   },
 });
 
-export const { setModel, setCategory, setPlatForm, setSelectedModelPlan } =
+export const { setModel, setPlatForm, setSelectedModelPlan, setCurrentPlan } =
   planSlice.actions;
 
 // export const selectCount = (state: RootState) => state.counter.value;
