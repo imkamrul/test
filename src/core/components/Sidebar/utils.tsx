@@ -1,6 +1,7 @@
 import {
   BoxPlotOutlined,
   CalendarOutlined,
+  CreditCardOutlined,
   HomeOutlined,
   QuestionCircleOutlined,
   UnorderedListOutlined,
@@ -12,6 +13,12 @@ export const MenuList = [
     title: "Home",
     icon: <HomeOutlined />,
     ref: "/home",
+  },
+  {
+    key: "billing",
+    title: "Billing",
+    icon: <CreditCardOutlined />,
+    ref: "/billing/my-plan",
   },
   {
     key: "orderList",

@@ -3,7 +3,7 @@
 import React from "react";
 
 export interface TablePropTypes {
-  title: string;
+  title?: string;
   columns: TableColumnTypes[];
   hasRowActions?: boolean;
   rowActions?: TableRowActionTypes[];

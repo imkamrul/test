@@ -1,10 +1,9 @@
-import CardIcon from "@/core/components/icons/Card.icon";
 import {
   TopUpCard,
   TopupResetHistoryTable,
 } from "@/core/components/TopUpReset";
+import CardIcon from "@/core/components/icons/Card.icon";
 
-import PageHeader from "@/core/Molicules/PageHeader";
 import { topUpReset } from "@/utils/pageData/topupReset/data";
 // import { topUpReset } from "@/utils/topUpReset/data";
 import { Col, Row } from "antd";
@@ -14,13 +13,6 @@ const TopUpReset = () => {
 
   return (
     <>
-      <PageHeader
-        options={{
-          title: "Top-up & Reset",
-          icon: <CardIcon />,
-        }}
-      />
-
       <Row gutter={30}>
         <Col lg={12} className="mt-4">
           <TopUpCard contents={topUp} />
@@ -37,6 +29,14 @@ const TopUpReset = () => {
       </Row>
     </>
   );
+};
+
+TopUpReset.layoutSettings = {
+  pageHeader: {
+    title: "Top-up & Reset ",
+    icon: <CardIcon />,
+  },
+  contentWrapperStyle: {},
 };
 
 export default TopUpReset;

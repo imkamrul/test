@@ -1,0 +1,40 @@
+.container {
+  overflow-x: hidden;
+  background: #ffffff;
+  box-shadow: 0px 2.13333px 150px rgba(217, 225, 255, 0.77);
+  padding: 0;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding-bottom: 150px;
+  & a {
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 17px 0 17px 15px;
+    border-bottom: 1px solid #e1eaf4;
+    border-left: 3px solid white;
+    width: 100%;
+    color: #080663;
+    &:hover {
+      background: #f4f3ff;
+      border-left: 3px solid #070337;
+      font-weight: 500;
+    }
+  }
+}
+.activeMenu {
+  & a {
+    border-left: 3px solid #070337;
+    font-weight: 500;
+  }
+}
+.title {
+  background: #ffffff;
+  box-shadow: 0px 2.13333px 90.6667px rgba(217, 225, 255, 0.59);
+  padding: 20px 35px;
+  color: #080663;
+  font-size: 22px;
+  font-weight: 500;
+}

@@ -1,0 +1,21 @@
+.titleContainer {
+  background: #ffffff;
+  box-shadow: 0px 2.13333px 90.6667px rgba(217, 225, 255, 0.59);
+  border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -ms-border-radius: 5px 5px 0px 0px;
+  -o-border-radius: 5px 5px 0px 0px;
+  padding: 20px 23px 20px 50px;
+  & p {
+    font-size: 22px;
+    font-weight: 500;
+    color: #080663;
+  }
+  & a {
+    color: #5f6fff;
+    text-align: right;
+
+    display: block;
+  }
+}

@@ -31,6 +31,8 @@ const MyApp = ({ Component, pageProps }: Types) => {
   const router = useRouter();
   const [profile] = useLocalStorage("profile", null);
 
+  const layoutSettings = Component.layoutSettings || null;
+
   function confirmRoute() {
     let routes = "/login";
     // if (profile && profile.role === 'admin') routes = '/dashboard'
@@ -42,9 +44,9 @@ const MyApp = ({ Component, pageProps }: Types) => {
   }
 
   useEffect(() => {
-    router.push({
-      pathname: confirmRoute(),
-    });
+    // router.push({
+    //   pathname: confirmRoute(),
+    // });
   }, []);
 
   return (
@@ -68,7 +70,7 @@ const MyApp = ({ Component, pageProps }: Types) => {
         }}
       >
         <Provider store={store}>
-          <Layout>
+          <Layout layoutSettings={layoutSettings}>
             <Component {...pageProps} />
           </Layout>
         </Provider>
