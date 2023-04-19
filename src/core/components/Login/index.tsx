@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button, Checkbox, message, Space } from "antd";
 import { IFormBuilder } from "../Form/Form.types";
 import Form from "../Form";
 import AuthHero from "../AuthHero";
 import Styles from "./Login.module.scss";
-import Link from "next/link";
-import Google from "../icons/Google";
-import Facebook from "../icons/Facebook";
-// import { DownloadOutlined } from "@ant-design/icons";
+import { AllButton } from "./AllButton";
+import { authenticate, setToken, setUseInfo } from "@/services/auth.service";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
   const loginForm: IFormBuilder = {
     title: "",
+    buttonComponent: <AllButton btnLoading={loading} />,
     layout: "vertical",
     hideFormButtons: true,
     size: "large",
@@ -51,8 +53,16 @@ const Login = () => {
     ],
   };
 
-  const onSubmit = (value: any, form: any) => {
-    console.log(value, form);
+  const onSubmit = async (value: any, form: any) => {
+    setLoading(true);
+    const res = await authenticate(value);
+    if (res.data.status == "SUCCESS") {
+      message.success(res.data.message);
+      setUseInfo(JSON.stringify(res.data.data.user));
+      setToken(res.data.data.token.accessToken);
+      setLoading(false);
+      router.push("/dashboard");
+    }
   };
 
   return (
@@ -64,34 +74,6 @@ const Login = () => {
         </div>
         <div className={Styles.loginBody}>
           <Form loading={false} formBuilder={loginForm} onSubmit={onSubmit} />
-          <div className={Styles.allBtn}>
-            <Button type="primary" block size="large">
-              Log In
-            </Button>
-            <Link href="#">Forget Password?</Link>
-            <Button
-              type="primary"
-              className={Styles.socialBtn}
-              size="large"
-              icon={<Google />}
-            >
-              <span className="ml-3"> Log In with Google</span>
-            </Button>
-            <Button
-              type="primary"
-              className={`${Styles.socialBtn} mt-4`}
-              size="large"
-              icon={<Facebook />}
-            >
-              <span className="ml-3"> Log In with Google</span>
-            </Button>
-            <p className="mt-5">
-              Dont have an account?{" "}
-              <Link href="#" className="ml-2">
-                Register
-              </Link>
-            </p>
-          </div>
         </div>
       </div>
       <div className={Styles.dashboardTour}>

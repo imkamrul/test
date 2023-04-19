@@ -1,16 +1,17 @@
-import { Button, Checkbox } from "antd";
-import Link from "next/link";
-import React from "react";
+import { Button, Checkbox, message } from "antd";
+import React, { useState } from "react";
 import AuthHero from "../AuthHero";
 import Form from "../Form";
 import { IFormBuilder } from "../Form/Form.types";
-import Facebook from "../icons/Facebook";
-import Google from "../icons/Google";
 import Styles from "./Registration.module.scss";
+import { AllButton } from "./AllButton";
+import { registration, setToken, setUseInfo } from "@/services/auth.service";
 
-const Registration = () => {
+const Registration: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const registrationForm: IFormBuilder = {
     title: "",
+    buttonComponent: <AllButton btnLoading={loading} />,
     layout: "vertical",
     hideFormButtons: true,
     size: "large",
@@ -18,28 +19,28 @@ const Registration = () => {
       {
         label: "First Name",
         type: "text",
-        name: "fName",
+        name: "first_name",
         placeHolder: "Sara |",
         colSpan: 12,
         active: true,
         validation: [
           {
             required: true,
-            message: "Please enter a email",
+            message: "Please enter a first name",
           },
         ],
       },
       {
         label: "Last Name",
         type: "text",
-        name: "lName",
-        placeHolder: "Put your last name",
+        name: "last_name",
+        placeHolder: "Nicole |",
         colSpan: 12,
         active: true,
         validation: [
           {
             required: true,
-            message: "Please enter a email",
+            message: "Please last name",
           },
         ],
       },
@@ -47,26 +48,34 @@ const Registration = () => {
         label: "Password",
         type: "password",
         name: "password",
-        placeHolder: "Put your password",
+        placeHolder: "2n27232!*04 |",
         colSpan: 12,
         active: true,
         validation: [
           {
             required: true,
-            message: "Please enter a password",
+            message: "Please enter password",
+          },
+          {
+            min: 6,
+            message: "Please enter password",
           },
         ],
       },
       {
         label: "Confirm Password",
         type: "password",
-        name: "cmPassowrd",
-        placeHolder: "Put your password",
+        name: "password_confirmation",
+        placeHolder: "*************",
         colSpan: 12,
         active: true,
         validation: [
           {
             required: true,
+            message: "Please confirm your password",
+          },
+          {
+            min: 6,
             message: "Password did not match",
           },
         ],
@@ -75,13 +84,17 @@ const Registration = () => {
         label: "E-Mail",
         type: "text",
         name: "email",
-        placeHolder: "Put your email",
+        placeHolder: "Nicole@gmail.com",
         colSpan: 12,
         active: true,
         validation: [
           {
+            type: "email",
+            message: "Please enter a valid email",
+          },
+          {
             required: true,
-            message: "Put your email",
+            message: "Please enter email",
           },
         ],
       },
@@ -112,9 +125,17 @@ const Registration = () => {
     ],
   };
 
-  const onSubmit = (value: any, form: any) => {
-    console.log(value, form);
+  const onSubmit = async (value: any, form: any) => {
+    setLoading(true);
+    const res = await registration(value);
+    if (res.data.status == "SUCCESS") {
+      message.success(res.data.message);
+      setUseInfo(JSON.stringify(res.data.data.user));
+      setToken(res.data.data.token.accessToken);
+      setLoading(false);
+    }
   };
+
   return (
     <>
       <AuthHero />
@@ -128,46 +149,6 @@ const Registration = () => {
             formBuilder={registrationForm}
             onSubmit={onSubmit}
           />
-          <div className={Styles.allBtn}>
-            <Button type="primary" className="mt-4" block size="large">
-              Register
-            </Button>
-
-            <p className={Styles.divider}>or</p>
-
-            <Button
-              type="primary"
-              className={`${Styles.socialBtn} mt-4`}
-              size="large"
-              icon={<Google />}
-            >
-              <span className="ml-3"> Register with Google</span>
-            </Button>
-            <Button
-              type="primary"
-              className={`${Styles.socialBtn} mt-4`}
-              size="large"
-              icon={<Facebook />}
-            >
-              <span className="ml-3"> Register with Facebook</span>
-            </Button>
-
-            <div>
-              <div className="mt-3">
-                <Checkbox>
-                  Do you want to receive news about our project? Sign up to our
-                  NEWSLETTER.
-                </Checkbox>
-              </div>
-            </div>
-
-            <p className="mt-5">
-              Already have an account?
-              <Link href="#" className="ml-2">
-                Login Now
-              </Link>
-            </p>
-          </div>
         </div>
       </div>
       <div className={Styles.dashboardTour}>

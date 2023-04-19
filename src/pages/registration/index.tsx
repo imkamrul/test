@@ -1,4 +1,4 @@
-import Registration from "@/core/components/Registration/Registration";
+import Registration from "@/core/components/Registration";
 
 const RegistrationPage = () => {
   return <Registration />;
