@@ -22,11 +22,12 @@ export const MyPlanWrapper = () => {
 
         <Row gutter={100} align={"middle"} className={Styles?.pricingContainer}>
           <Col span={12}>
-            {model?.toLowerCase().includes("express") ? <Category /> : ""}
-          </Col>
-          <Col span={12}>
             <Platform />
           </Col>
+          <Col span={12}>
+            {model?.toLowerCase().includes("express") ? <Category /> : ""}
+          </Col>
+
           <Col span={11}>
             <PricingCard />
           </Col>

@@ -25,9 +25,6 @@ export const MyPlanHero = () => {
 
   return (
     <Row className={Styles?.sectionBg}>
-      <Col span={24}>
-        <h4>Your are currently registered under Free subscription plan.</h4>
-      </Col>
       <Col span={5} className={Styles?.btnContainer}>
         {btnList?.map((item, idx) => {
           return (
