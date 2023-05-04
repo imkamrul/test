@@ -1,0 +1,38 @@
+.container {
+  border: 1px solid #dfdfdf;
+  padding: 25px 30px !important;
+  display: flex;
+
+  gap: 0 45px;
+
+  & p {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    color: #7b7b7b;
+    font-size: 18px;
+    font-weight: 500;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 20px;
+      bottom: 0;
+      border-right: 1.5px solid #ebebeb;
+    }
+  }
+}
+.active_menu {
+  position: relative;
+  width: auto;
+  color: #665bff !important;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: -26px;
+    border-bottom: 2px solid #665bff;
+  }
+}
