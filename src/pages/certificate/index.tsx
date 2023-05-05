@@ -1,4 +1,5 @@
 import {
+  AllCertificate,
   CertificateMenu,
   CertificatesHero,
 } from "@/core/components/Certificates";
@@ -10,6 +11,7 @@ const Certificate = () => {
       <Row gutter={30} className="">
         <CertificatesHero />
         <CertificateMenu />
+        <AllCertificate />
       </Row>
     </>
   );
