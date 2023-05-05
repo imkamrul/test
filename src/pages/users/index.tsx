@@ -10,6 +10,7 @@ import {
 } from "@/utils/pageData/users/data";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Form from "../../core/components/Form";
 // import { getClassesNoMasking } from '@/apis/authContainer'
@@ -179,6 +180,9 @@ const Users = () => {
   //     search_by: selectedSearchBy,
   //   }
   // }, [])
+
+  const router = useRouter();
+  console.log("router :", router);
 
   const editFormSettings = getEditFormSettings({
     formType: selectedUserId ? "Edit" : "Add",

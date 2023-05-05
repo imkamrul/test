@@ -13,3 +13,21 @@ img {
 a {
   display: inline-block;
 }
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  @include md {
+    width: 720px;
+    padding: 0 0px;
+  }
+  @include lg {
+    width: 960px;
+    padding: 0 0px;
+  }
+  @include xl {
+    width: 1170px;
+    padding: 0 0px;
+  }
+}

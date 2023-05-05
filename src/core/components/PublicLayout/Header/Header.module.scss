@@ -1,0 +1,12 @@
+.publicHeader {
+  background: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  & img {
+    display: block;
+    padding: 20px 0;
+  }
+  //   background: #000;
+}

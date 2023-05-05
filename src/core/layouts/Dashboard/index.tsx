@@ -19,7 +19,11 @@ interface DashboardLayoutPropsTypes {
 
 const Dashboard = (props: DashboardLayoutPropsTypes) => {
   const { children, layoutSettings } = props;
+<<<<<<< HEAD
   console.log("contentWrapperStyle :", layoutSettings?.contentWrapperStyle);
+=======
+
+>>>>>>> e7050cfe5b424815e3bc809863d054efee9badf2
   const [hasMounted, setHasMounted] = useState(false);
   const [routes, setRoutes] = useState<string[]>([]);
   const [hlinks, setHlinks] = useState<string[]>([]);
