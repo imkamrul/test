@@ -1,16 +1,12 @@
+import { ActiveAccount, HeroTab, NoAccount } from "@/core/components/HomePage";
 import { Layout } from "antd";
 const DashboardPage = () => {
   return (
-    <Layout.Content
-      className="site-layout-background"
-      style={{
-        padding: 24,
-        margin: 0,
-        minHeight: "100%",
-      }}
-    >
-      adfa
-    </Layout.Content>
+    <>
+      <HeroTab />
+      {/* <ActiveAccount /> */}
+      <NoAccount />
+    </>
   );
 };
 
