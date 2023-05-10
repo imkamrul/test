@@ -1,17 +1,19 @@
 import React from "react";
-import Styles from "./ActiveAccount.module.scss";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import required modules
+import { Pagination } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import required modules
-import { Pagination } from "swiper";
+import Styles from "./ActiveAccount.module.scss";
 
-export const ActiveAccount = () => {
+const { Title, Paragraph } = Typography;
+
+export const ActiveAccount: React.FC = () => {
   return (
     <div className={Styles.wrapper}>
       <div className={Styles.createAccount}>
@@ -22,11 +24,16 @@ export const ActiveAccount = () => {
           </Button>
         </div>
         <div className={Styles.dashboardTour}>
-          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/q_auto/f_auto/v1683609031/fundednext-dashboard-v2/batch-demo-dashboard" />
+          <img
+            src="https://res.cloudinary.com/dvzadhnmh/image/upload/q_auto/f_auto/v1683609031/fundednext-dashboard-v2/batch-demo-dashboard"
+            alt="Demo Dashboard"
+          />
           <div className={Styles.dashboardTourContent}>
             <div className={Styles.dashboardCard}>
-              <h3>Demo Dashboard- free tour dashboard</h3>
-              <p>You are given a demo account to experience the dashboard </p>
+              <Title level={3}>Demo Dashboard - Free Tour Dashboard</Title>
+              <Paragraph>
+                You are given a demo account to experience the dashboard
+              </Paragraph>
             </div>
             <button>Dashboard</button>
           </div>
@@ -34,7 +41,10 @@ export const ActiveAccount = () => {
       </div>
       <div className={Styles.slider}>
         <div className={Styles.imgWrapper}>
-          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/q_auto/f_auto/v1683610189/fundednext-dashboard-v2/notice" />
+          <img
+            src="https://res.cloudinary.com/dvzadhnmh/image/upload/q_auto/f_auto/v1683610189/fundednext-dashboard-v2/notice"
+            alt="Notice"
+          />
         </div>
         <Swiper
           pagination={true}
@@ -42,30 +52,30 @@ export const ActiveAccount = () => {
           className={Styles.swapper}
         >
           <SwiperSlide>
-            <h3>Profit Share Increased 90%</h3>
-            <p>
+            <Title level={3}>Profit Share Increased 90%</Title>
+            <Paragraph>
               From now on our traders will receive a 90% profit share upon
               getting a real account. For more detail visit
-            </p>
+            </Paragraph>
           </SwiperSlide>
           <SwiperSlide>
-            <h3>Profit Share Increased 90%</h3>
-            <p>
+            <Title level={3}>Profit Share Increased 90%</Title>
+            <Paragraph>
               From now on our traders will receive a 90% profit share upon
               getting a real account. For more detail visit
-            </p>
+            </Paragraph>
           </SwiperSlide>
           <SwiperSlide>
-            <h3>Profit Share Increased 90%</h3>
-            <p>
+            <Title level={3}>Profit Share Increased 90%</Title>
+            <Paragraph>
               From now on our traders will receive a 90% profit share upon
               getting a real account. For more detail visit
-            </p>
+            </Paragraph>
           </SwiperSlide>
         </Swiper>
-        <button className={Styles.btnLearnMore}>
-          <p>Learn More</p>
-        </button>
+        <Button className={Styles.btnLearnMore}>
+          <Paragraph>Learn More</Paragraph>
+        </Button>
       </div>
     </div>
   );
