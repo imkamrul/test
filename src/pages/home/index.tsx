@@ -4,8 +4,8 @@ const DashboardPage = () => {
   return (
     <>
       <HeroTab />
-      {/* <ActiveAccount /> */}
-      <NoAccount />
+      <ActiveAccount />
+      {/* <NoAccount /> */}
     </>
   );
 };

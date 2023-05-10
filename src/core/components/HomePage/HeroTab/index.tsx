@@ -1,22 +1,25 @@
 import React from "react";
-import Styles from "./HeroTab.module.scss";
+import { Typography } from "antd";
+import styles from "./HeroTab.module.scss";
 
-export const HeroTab = () => {
+const { Title } = Typography;
+
+export const HeroTab: React.FC = () => {
   return (
-    <div className={Styles.wrapper}>
-      <h3>
-        Welcome to <span className={Styles.funded}>Funded</span>Next
-      </h3>
+    <div className={styles.wrapper}>
+      <Title level={3}>
+        Welcome to <span className={styles.funded}>Funded</span>Next
+      </Title>
 
-      <div className={Styles.allTab}>
-        <div className={Styles.tab}>
-          <h4>Active Account</h4>
+      <div className={styles.allTab}>
+        <div className={styles.tab}>
+          <Title level={3}>Active Account</Title>
         </div>
-        <div className={Styles.tab}>
-          <h4>Inactive Account</h4>
+        <div className={styles.tab}>
+          <Title level={3}>Inactive Account</Title>
         </div>
-        <div className={Styles.tab}>
-          <h4>Breached Account</h4>
+        <div className={styles.tab}>
+          <Title level={3}>Breached Account</Title>
         </div>
       </div>
     </div>
