@@ -1,4 +1,4 @@
-import { Button, Checkbox, message } from "antd";
+import { Button, Checkbox, Typography, Col, Row, message } from "antd";
 import React, { useState } from "react";
 import AuthHero from "../AuthHero";
 import Form from "../Form";
@@ -6,8 +6,11 @@ import { IFormBuilder } from "../Form/Form.types";
 import Styles from "./Registration.module.scss";
 import { AllButton } from "./AllButton";
 import { registration, setToken, setUseInfo } from "@/services/auth.service";
+import { useMediaQuery } from "@/hooks/responsive.hooks";
+const { Title, Paragraph } = Typography;
 
 const Registration: React.FC = () => {
+  let isTab = useMediaQuery("(max-width: 1080px)");
   const [loading, setLoading] = useState<boolean>(false);
   const registrationForm: IFormBuilder = {
     title: "",
@@ -21,7 +24,7 @@ const Registration: React.FC = () => {
         type: "text",
         name: "first_name",
         placeHolder: "Sara |",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         validation: [
           {
@@ -35,7 +38,7 @@ const Registration: React.FC = () => {
         type: "text",
         name: "last_name",
         placeHolder: "Nicole |",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         validation: [
           {
@@ -49,7 +52,7 @@ const Registration: React.FC = () => {
         type: "password",
         name: "password",
         placeHolder: "2n27232!*04 |",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         validation: [
           {
@@ -67,7 +70,7 @@ const Registration: React.FC = () => {
         type: "password",
         name: "password_confirmation",
         placeHolder: "*************",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         validation: [
           {
@@ -85,7 +88,7 @@ const Registration: React.FC = () => {
         type: "text",
         name: "email",
         placeHolder: "Nicole@gmail.com",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         validation: [
           {
@@ -103,7 +106,7 @@ const Registration: React.FC = () => {
         type: "select",
         name: "gender",
         placeHolder: "Select Gender",
-        colSpan: 12,
+        colSpan: isTab ? 24 : 12,
         active: true,
         options: [
           {
@@ -136,29 +139,33 @@ const Registration: React.FC = () => {
     }
   };
 
+  console.log(isTab);
+
   return (
     <>
       <AuthHero />
-      <div className={Styles.loginForm}>
-        <div className={Styles.loginHeader}>
-          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680061656/logo-login.svg" />
-        </div>
-        <div className={Styles.loginBody}>
-          <Form
-            loading={false}
-            formBuilder={registrationForm}
-            onSubmit={onSubmit}
-          />
-        </div>
-      </div>
-      <div className={Styles.dashboardTour}>
-        <h3>Wellcome to Exclusive Dashboard Tour</h3>
-        <p>
-          Get access to exclusive tour of our platform within 10 seconds, by
-          simply submitting the following information.
-        </p>
-        <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680066478/demo-dashboard.png" />
-      </div>
+      <Row>
+        <Col lg={10} offset={2} className={Styles.registrationForm}>
+          <div className={Styles.registrationHeader}>
+            <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680061656/logo-login.svg" />
+          </div>
+          <div className={Styles.registrationBody}>
+            <Form
+              loading={false}
+              formBuilder={registrationForm}
+              onSubmit={onSubmit}
+            />
+          </div>
+        </Col>
+        <Col lg={10} offset={2} className={Styles.dashboardTour}>
+          <Title level={3}>Wellcome to Exclusive Dashboard Tour</Title>
+          <Title level={5}>
+            Get access to exclusive tour of our platform within 10 seconds,{" "}
+            <br /> by simply submitting the following information.
+          </Title>
+          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680066478/demo-dashboard.png" />
+        </Col>
+      </Row>
     </>
   );
 };

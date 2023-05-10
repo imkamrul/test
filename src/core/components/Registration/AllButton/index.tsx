@@ -23,11 +23,8 @@ export const AllButton = ({ btnLoading }: MyButtonProps) => {
       >
         Register
       </Button>
-
-      <p className={Styles.divider}>or</p>
-
+      <div className={Styles.divider}>or</div>
       <Button
-        type="primary"
         className={`${Styles.socialBtn} mt-4`}
         size="large"
         icon={<Google />}
@@ -35,7 +32,6 @@ export const AllButton = ({ btnLoading }: MyButtonProps) => {
         <span className="ml-3"> Register with Google</span>
       </Button>
       <Button
-        type="primary"
         className={`${Styles.socialBtn} mt-4`}
         size="large"
         icon={<Facebook />}
@@ -43,21 +39,22 @@ export const AllButton = ({ btnLoading }: MyButtonProps) => {
         <span className="ml-3"> Register with Facebook</span>
       </Button>
 
-      <div>
+      {/* <div>
         <div className="mt-3">
           <Checkbox>
             Do you want to receive news about our project? Sign up to our
             NEWSLETTER.
           </Checkbox>
         </div>
-      </div>
+      </div> */}
 
-      <p className="mt-5">
-        Already have an account?
-        <Link href="#" className="ml-2">
+      <div className="mt-5 d-flex" style={{ fontSize: "15px" }}>
+        <span>Already have an account? </span>
+        <Link className="ml-2" href="/login">
+          {" "}
           Login Now
         </Link>
-      </p>
+      </div>
     </div>
   );
 };
