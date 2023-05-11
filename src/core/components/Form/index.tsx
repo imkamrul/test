@@ -247,7 +247,6 @@ const DynamicForm = ({
           onFieldsChange={(changed, values) => {
             // @ts-ignore
             changedFields.add(changed[0].name[0]);
-            console.log(changedFields);
             // @ts-ignore
             onFieldsChange && onFieldsChange([...changedFields]);
             // getChangedFields(changedFields)

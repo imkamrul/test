@@ -21,17 +21,14 @@ export const AllButton = ({ btnLoading }: MyButtonProps) => {
       >
         Log In
       </Button>
-      <Link href="#">Forget Password?</Link>
-      <Button
-        type="primary"
-        className={Styles.socialBtn}
-        size="large"
-        icon={<Google />}
-      >
+      <Link href="#" className="mt-3 mb-3">
+        Forget Password?
+      </Link>
+      <div className={Styles.divider}>or</div>
+      <Button className={Styles.socialBtn} size="large" icon={<Google />}>
         <span className="ml-3"> Log In with Google</span>
       </Button>
       <Button
-        type="primary"
         className={`${Styles.socialBtn} mt-4`}
         size="large"
         icon={<Facebook />}

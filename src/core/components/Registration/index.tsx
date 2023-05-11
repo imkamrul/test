@@ -139,8 +139,6 @@ const Registration: React.FC = () => {
     }
   };
 
-  console.log(isTab);
-
   return (
     <>
       <AuthHero />

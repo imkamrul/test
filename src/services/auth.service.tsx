@@ -4,6 +4,7 @@ import { jsonDecript, jsonEncript } from "@/utils";
 const urls = {
   register: "auth/register",
   login: "auth/login",
+  reset: "auth/forget",
 };
 let tokenRenewalTimeout: number;
 
@@ -22,6 +23,10 @@ interface ILogin {
   password: String;
 }
 
+interface IReset {
+  email: String;
+}
+
 export async function authenticate(body: ILogin) {
   const url = urls.login;
   return post(url, body);
@@ -29,6 +34,11 @@ export async function authenticate(body: ILogin) {
 
 export async function registration(body: IRegister) {
   const url = urls.register;
+  return post(url, body);
+}
+
+export async function reset(body: IReset) {
+  const url = urls.reset;
   return post(url, body);
 }
 
