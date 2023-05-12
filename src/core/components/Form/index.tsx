@@ -17,7 +17,7 @@ import {
   Card,
   Empty,
 } from "antd";
-import React, { memo, useEffect, useState } from "react";
+import React, { ReactNode, memo, useEffect, useState } from "react";
 import Upload from "./Upload";
 import s from "./form.module.scss";
 import { IFormBuilder, IFormControl } from "./Form.types";
@@ -247,7 +247,6 @@ const DynamicForm = ({
           onFieldsChange={(changed, values) => {
             // @ts-ignore
             changedFields.add(changed[0].name[0]);
-            console.log(changedFields);
             // @ts-ignore
             onFieldsChange && onFieldsChange([...changedFields]);
             // getChangedFields(changedFields)
@@ -943,6 +942,8 @@ const DynamicForm = ({
               </Row>
             </>
           )}
+
+          {formBuilder.buttonComponent}
         </Form>
       </div>
     </Spin>

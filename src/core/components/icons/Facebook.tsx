@@ -1,5 +1,3 @@
-import React from "react";
-
 const Facebook: React.FC = () => {
   return (
     <svg
@@ -23,8 +21,8 @@ const Facebook: React.FC = () => {
           y2="26.1773"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#18ACFE" />
-          <stop offset="1" stop-color="#0163E0" />
+          <stop stopColor="#18ACFE" />
+          <stop offset="1" stopColor="#0163E0" />
         </linearGradient>
       </defs>
     </svg>

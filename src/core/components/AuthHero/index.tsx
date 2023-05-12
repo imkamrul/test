@@ -1,11 +1,17 @@
 import React from "react";
 import Styles from "./AuthHero.module.scss";
+import { Col, Row } from "antd";
 
-const AuthHero = () => {
+const AuthHero: React.FC = () => {
   return (
-    <div className={Styles.authHero}>
-      <h3>Hurry Up!!! and get funded by fundednext</h3>
-    </div>
+    <Row className={Styles.authHero}>
+      <Col span={12}></Col>
+      <Col span={10} offset={2}>
+        <h3>
+          Hurry Up!!! and get funded <br /> by fundednext
+        </h3>
+      </Col>
+    </Row>
   );
 };
 

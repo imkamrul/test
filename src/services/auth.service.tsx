@@ -1,23 +1,44 @@
-import { post } from './api';
-import {jsonDecript, jsonEncript} from "@/utils";
+import { Interface } from "readline";
+import { post } from "./api";
+import { jsonDecript, jsonEncript } from "@/utils";
 const urls = {
-  getAll: 'user/all',
-  addUser: 'user/add',
-  login: 'auth/login',
+  register: "auth/register",
+  login: "auth/login",
+  reset: "auth/forget",
 };
 let tokenRenewalTimeout: number;
 
-export async function authenticate(email: string, password: string) {
-  
-  email = email.toLowerCase();
+interface IRegister {
+  first_name: String;
+  last_name: String;
+  password: String;
+  provider?: String;
+  password_confirmation: String;
+  email: String;
+  referral_code?: String;
+}
+
+interface ILogin {
+  email: String;
+  password: String;
+}
+
+interface IReset {
+  email: String;
+}
+
+export async function authenticate(body: ILogin) {
   const url = urls.login;
+  return post(url, body);
+}
 
-  const body = {
-    username: email,
-    password: password,
-    grantType: 'password',
-  };
+export async function registration(body: IRegister) {
+  const url = urls.register;
+  return post(url, body);
+}
 
+export async function reset(body: IReset) {
+  const url = urls.reset;
   return post(url, body);
 }
 
@@ -29,19 +50,18 @@ export function clearLocalStorage() {
   localStorage.clear();
 }
 
-export function setToken(token:string){
-  return localStorage.setItem('token',token);
+export function setToken(token: string) {
+  return localStorage.setItem("token", token);
 }
 
-export function setUseInfo(user: any){
-  return localStorage.setItem('user',jsonEncript(user));
+export function setUseInfo(user: any) {
+  return localStorage.setItem("user", jsonEncript(user));
 }
 
-export async function getUserInfo(){
-  return jsonDecript(localStorage.getItem('user'));
+export async function getUserInfo() {
+  return jsonDecript(localStorage.getItem("user"));
 }
 
-export function getToken(){
-  return localStorage.getItem('token');
+export function getToken() {
+  return localStorage.getItem("token");
 }
-

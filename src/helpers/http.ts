@@ -1,51 +1,50 @@
-import axios from 'axios';
-import {getToken} from "@/helpers/cookie";
+import axios from "axios";
+import { getToken } from "@/helpers/cookie";
 
-const API_URL = process.env.API_URL;
-
+const API_URL = "https://backend-evalution.fundednext.com/api/v1";
 
 const caxios = axios.create({
-    baseURL: API_URL,
-    timeout: 200000,
-    headers: {
-        // Authorization: 'Bearer ' + getToken(),
-        //Authorization: 'Bearer ',
-        'Content-Type': 'application/json',
-    },
-    // transformRequest: [
-    //     (data) => {
-    //         return data;
-    //     },
-    // ],
-    // validateStatus: (status): any => {
-    //     if (status < 300 || status === 400 || status === 422) {
-    //         return status;
-    //     }
-    //     return true;
-    // },
+  baseURL: API_URL,
+  timeout: 200000,
+  headers: {
+    // Authorization: 'Bearer ' + getToken(),
+    //Authorization: 'Bearer ',
+    "Content-Type": "application/json",
+  },
+  // transformRequest: [
+  //     (data) => {
+  //         return data;
+  //     },
+  // ],
+  // validateStatus: (status): any => {
+  //     if (status < 300 || status === 400 || status === 422) {
+  //         return status;
+  //     }
+  //     return true;
+  // },
 });
 
 const openAxios = axios.create({
-    baseURL: API_URL,
-    timeout: 200000,
-    headers: {
-        // Authorization: API_URL,
-        'Content-Type': 'application/json',
+  baseURL: API_URL,
+  timeout: 200000,
+  headers: {
+    // Authorization: API_URL,
+    "Content-Type": "application/json",
+  },
+  transformRequest: [
+    (data) => {
+      return data;
     },
-    transformRequest: [
-        (data) => {
-            return data;
-        },
-    ],
+  ],
 });
 caxios.interceptors.request.use(
-    (config) => {
-        config.headers.Authorization = `Bearer ${getToken()}`;
-        return config;
-    },
-    (err) => {
-        console.log(err);
-    }
+  (config) => {
+    config.headers.Authorization = `Bearer ${getToken()}`;
+    return config;
+  },
+  (err) => {
+    console.log(err);
+  }
 );
 // caxios.interceptors.response.use(
 //     (res) => {
@@ -91,6 +90,6 @@ export const http = caxios;
 export const openHttp = openAxios;
 
 export default {
-    http,
-    openHttp,
+  http,
+  openHttp,
 };
