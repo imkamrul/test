@@ -21,10 +21,16 @@ export const MenuList = [
     ref: "/billing/my-plan",
   },
   {
-    key: "orderList",
-    title: "Order List",
+    key: "account-overview",
+    title: "Account Overview",
     icon: <UnorderedListOutlined />,
-    ref: "/order-list",
+    ref: "/account-overview",
+  },
+  {
+    key: "trading-overview",
+    title: "Trading Overview",
+    icon: <UnorderedListOutlined />,
+    ref: "/trading-overview",
   },
   {
     key: "utilities",

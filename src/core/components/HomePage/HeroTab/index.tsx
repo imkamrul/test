@@ -4,7 +4,19 @@ import styles from "./HeroTab.module.scss";
 
 const { Title } = Typography;
 
-export const HeroTab: React.FC = () => {
+export interface HeroTabProps {
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const HeroTab: React.FC<HeroTabProps> = ({
+  activeTab,
+  setActiveTab,
+}) => {
+  const handleTabClick = (tab: string) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className={styles.wrapper}>
       <Title level={3}>
@@ -12,14 +24,29 @@ export const HeroTab: React.FC = () => {
       </Title>
 
       <div className={styles.allTab}>
-        <div className={styles.tab}>
-          <Title level={3}>Active Account</Title>
+        <div
+          className={`${styles.tab} ${
+            activeTab === "active" ? styles.activeTab : ""
+          }`}
+          onClick={() => handleTabClick("active")}
+        >
+          <h3>Active Account</h3>
         </div>
-        <div className={styles.tab}>
-          <Title level={3}>Inactive Account</Title>
+        <div
+          className={`${styles.tab} ${
+            activeTab === "inactive" ? styles.activeTab : ""
+          }`}
+          onClick={() => handleTabClick("inactive")}
+        >
+          <h3>Inactive Account</h3>
         </div>
-        <div className={styles.tab}>
-          <Title level={3}>Breached Account</Title>
+        <div
+          className={`${styles.tab} ${
+            activeTab === "breached" ? styles.activeTab : ""
+          }`}
+          onClick={() => handleTabClick("breached")}
+        >
+          <h3>Breached Account</h3>
         </div>
       </div>
     </div>
