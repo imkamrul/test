@@ -1,9 +1,10 @@
 .wrapper {
   background: #ffffff;
-  height: 73vh;
   border: 1px solid #ededed;
   padding-top: 30px;
   display: flex;
+  padding-left: 30px;
+  min-height: 70vh;
 }
 
 .dashboardTour {
@@ -11,14 +12,14 @@
   border: 1px solid #635bff;
   box-shadow: 0.50137px 0px 69.189px rgba(217, 225, 255, 0.38);
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
 
   & img {
-    padding: 25px;
+    padding: 12px 25px;
     background: #ffffff;
     box-shadow: 0.473293px 0px 90.624px rgba(217, 225, 255, 0.6);
     border-radius: 3.776px 0px 0px 3.776px;
@@ -41,6 +42,9 @@
 .dashboardTourContent {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-right: 70px;
+  width: 100%;
   & button {
     width: 110px;
     height: 45px;
@@ -50,17 +54,18 @@
     color: white;
     background: #665bff;
     border-radius: 4.33702px;
+    cursor: pointer;
   }
 }
 .createAccount {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 70%;
+  width: 100%;
 }
 
 .dashboardCard {
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .slider {
@@ -79,6 +84,7 @@
   align-content: center;
   max-width: 422px;
   align-items: center;
+  height: 450px;
 
   & h3 {
     margin-top: 30px;
@@ -123,4 +129,35 @@
 .swapper {
   width: 100%;
   height: 100%;
+}
+
+.accountBtn {
+  font-weight: bold;
+  background: rgba(230, 235, 255, 0.77);
+  & span {
+    color: #102048;
+  }
+}
+
+.activeAccountCard {
+  display: flex;
+  margin-top: 10px;
+  gap: 30px;
+  & p {
+    color: #4c4a67;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+.borderRight {
+  border: 1px solid #d0cfd3;
+  padding-right: 30px;
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.singleSlider {
+  text-align: center;
 }

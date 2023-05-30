@@ -1,3 +1,3 @@
 export { HeroTab } from "./HeroTab";
-export { ActiveAccount } from "./ActiveAccount";
+export { Account } from "./Account";
 export { NoAccount } from "./NoAccount";
