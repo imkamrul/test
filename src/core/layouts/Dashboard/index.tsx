@@ -1,12 +1,11 @@
 import PageHeader from "@/core/Molicules/PageHeader";
-import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { getToken } from "@/services/auth.service";
 import { PageHeaderPropTypes } from "@/types/global.types";
 import { Layout } from "antd";
 import { useRouter } from "next/router";
 import { CSSProperties, useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/TopBar";
-import { getToken } from "@/services/auth.service";
 
 const { Content } = Layout;
 
