@@ -1,0 +1,19 @@
+.bannerContainer {
+  background: linear-gradient(90deg, #f5f4fc 0%, #f6f5ff 100%);
+  padding: 50px 0;
+
+  & h4 {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 150%;
+    text-align: center;
+    color: #000000;
+  }
+  p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    text-align: center;
+    color: #000000;
+  }
+}

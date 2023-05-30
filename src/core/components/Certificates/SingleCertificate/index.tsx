@@ -1,4 +1,5 @@
-import { Col } from "antd";
+import { Col, notification } from "antd";
+import { useRouter } from "next/router";
 import Style from "./SingleCertificate.module.scss";
 interface SingleCertificateProps {
   content: {
@@ -11,7 +12,25 @@ interface SingleCertificateProps {
   };
 }
 export const SingleCertificate = ({ content }: SingleCertificateProps) => {
-  const { certName, htmlMarkup, url, unlocked } = content;
+  console.log("content :", content);
+
+  const { certName, htmlMarkup, url, unlocked, certId } = content;
+  const router = useRouter();
+  const handleButtonClick = (id: number, status: boolean): void => {
+    const handleErrorMessages = (): void => {
+      notification.open({
+        message: "Certificate is locked!",
+        description:
+          "Certificate is locked! Please complete the challenge to unlock the certificate.",
+      });
+    };
+    if (status) {
+      router.push(`/certificate/1820794774/4011742131af9`);
+      // router.push(`/certificate/${id}`);
+    } else {
+      handleErrorMessages();
+    }
+  };
   return (
     <>
       <Col
@@ -30,9 +49,12 @@ export const SingleCertificate = ({ content }: SingleCertificateProps) => {
           }
           alt=""
         />
-        <p className={`${Style.certificate_text} ${Style[htmlMarkup]}`}>
+        <button
+          className={`${Style.certificate_text} ${Style[htmlMarkup]}`}
+          onClick={() => handleButtonClick(certId, unlocked)}
+        >
           {certName}
-        </p>
+        </button>
       </Col>
     </>
   );
