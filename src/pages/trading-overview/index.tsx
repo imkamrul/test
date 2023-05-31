@@ -10,6 +10,7 @@ const TradingOverview = () => {
   const [tradingDetails, setTradingDetails] = useState<TradingDetails | null>(
     null
   );
+  const [tradingHistory, setTradingHistory] = useState<null>(null);
 
   const fetchTradingOveriviewData = async (token: string) => {
     let id = 5731;
@@ -37,7 +38,7 @@ const TradingOverview = () => {
         }
       );
       const result = await response.json();
-      console.log("distory", result);
+      setTradingHistory(result);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,8 +53,16 @@ const TradingOverview = () => {
   }, []);
   return (
     <div style={{ padding: "30px" }}>
-      <TradingOverviewTable tradingDetails={tradingDetails} />
-      <TradingHistoryTable />
+      {tradingDetails ? (
+        <TradingOverviewTable tradingDetails={tradingDetails} />
+      ) : (
+        <p>Loading...</p>
+      )}
+      {tradingHistory ? (
+        <TradingHistoryTable tradingHistory={tradingHistory} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

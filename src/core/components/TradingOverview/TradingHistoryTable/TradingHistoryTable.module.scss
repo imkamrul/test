@@ -6,8 +6,12 @@
 }
 .heading {
   display: flex;
-  background: #ffffff;
+  justify-content: space-between;
   box-shadow: 0px 2.13333px 90.6667px rgba(217, 225, 255, 0.59);
+}
+.headingLeft {
+  display: flex;
+  background: #ffffff;
   border-radius: 5px 5px 0px 0px;
   padding: 15px 35px;
   & h3 {
@@ -20,14 +24,26 @@
     padding: 0px 8px;
   }
 }
+.headingRight {
+  display: flex;
+  background: #ffffff;
+  border-radius: 5px 5px 0px 0px;
+  padding: 15px 35px;
+  align-items: center;
+
+  & h4 {
+    padding-right: 10px;
+  }
+}
 .table {
   padding: 20px 35px;
   padding-bottom: 40px;
 }
 
-.row {
+.tableHeade {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #dedede;
   padding-bottom: 20px;
   & h3 {
@@ -39,9 +55,23 @@
     color: #5e5e5e;
   }
 }
-.body {
+.row {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #dedede;
   padding: 20px 0px;
+  align-items: center;
+}
+
+.btnView {
+  background: #f5f5f5;
+  border-radius: 4px;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130.5%;
+  color: #000000;
+  padding: 8px 14px;
+  border: 0px;
 }

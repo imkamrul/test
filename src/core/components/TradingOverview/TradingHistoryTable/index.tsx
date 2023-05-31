@@ -3,17 +3,60 @@ import Style from "./TradingHistoryTable.module.scss";
 import Globe from "../../icons/Globe";
 import Swap from "../../icons/Swap";
 import Clipboard from "../../icons/Clipboard";
+import { Button, Select } from "antd";
 
-export const TradingHistoryTable: React.FC = () => {
+export interface TradingHistory {
+  current_page: number;
+  data: any[]; // Specify the type of the 'data' property as needed
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: any[]; // Specify the type of the 'links' property as needed
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
+}
+interface TradingDetailsProps {
+  tradingHistory: TradingHistory;
+}
+
+export const TradingHistoryTable: React.FC<TradingDetailsProps> = ({
+  tradingHistory,
+}) => {
+  const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
   return (
     <div className={Style.wrapper}>
       <div className={Style.heading}>
-        <Globe />
-        <h3>Trading History</h3>
-        <Swap />
+        <div className={Style.headingLeft}>
+          <Globe />
+          <h3>Trading History</h3>
+          <Swap />
+        </div>
+        <div className={Style.headingRight}>
+          <h4>Sort By:</h4>
+          <Select
+            defaultValue="Select Type"
+            style={{ width: "200px", margin: "0px 20px" }}
+            onChange={handleChange}
+            options={[
+              { value: "jack", label: "Jack" },
+              { value: "lucy", label: "Lucy" },
+              { value: "Yiminghe", label: "yiminghe" },
+              { value: "disabled", label: "Disabled", disabled: true },
+            ]}
+          />
+          <Button type="primary">Download</Button>
+        </div>
       </div>
+
       <div className={Style.table}>
-        <div className={Style.row}>
+        <div className={Style.tableHeade}>
           <div>
             <h3>SN</h3>
           </div>
@@ -48,41 +91,43 @@ export const TradingHistoryTable: React.FC = () => {
             <h3>Details</h3>
           </div>
         </div>
-        <div className={Style.body}>
-          <div>
-            <p>SN</p>
+        {tradingHistory?.data?.map((trade, idx) => (
+          <div className={Style.row}>
+            <div>
+              <p>{idx}</p>
+            </div>
+            <div>
+              <p>{trade?.open_time_str}</p>
+            </div>
+            <div>
+              <p>{trade?.open_price}</p>
+            </div>
+            <div>
+              <p>{trade?.close_time_str}</p>
+            </div>
+            <div>
+              <p>{trade?.close_price}</p>
+            </div>
+            <div>
+              <p>{trade?.lots}</p>
+            </div>
+            <div>
+              <p>{trade?.commission}</p>
+            </div>
+            <div>
+              <p>{trade?.swap}</p>
+            </div>
+            <div>
+              <p>{trade?.symbol}</p>
+            </div>
+            <div>
+              <p>{trade?.type_str}</p>
+            </div>
+            <div>
+              <button className={Style.btnView}>View</button>
+            </div>
           </div>
-          <div>
-            <p>Open Time</p>
-          </div>
-          <div>
-            <p>Open Price</p>
-          </div>
-          <div>
-            <p>Close Time</p>
-          </div>
-          <div>
-            <p>Close Price</p>
-          </div>
-          <div>
-            <p>Lots</p>
-          </div>
-          <div>
-            <p>Commission</p>
-          </div>
-          <div>
-            <p>Swap</p>
-          </div>
-          <div>
-            <p>Symbol</p>
-          </div>
-          <div>
-            <p>Type</p>
-          </div>
-          <div>
-            <p>Details</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
