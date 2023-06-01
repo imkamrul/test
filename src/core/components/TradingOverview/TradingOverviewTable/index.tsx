@@ -2,6 +2,8 @@ import React from "react";
 
 import Style from "../TradingOverviewTable/TradingOverviewTable.module.scss";
 import Clipboard from "../../icons/Clipboard";
+import { Progress, Slider } from "antd";
+import { red, green } from "@ant-design/colors";
 
 export interface TradingDetails {
   average_loss: number;
@@ -58,7 +60,15 @@ export const TradingOverviewTable: React.FC<TradingDetailsProps> = ({
             </div>
             <div className={Style.tableRow}>
               <h3>Profitability</h3>
-              <h3>{tradingDetails?.profitability}</h3>
+              <div style={{ width: "100px" }}>
+                <Progress
+                  percent={100}
+                  success={{ percent: tradingDetails?.average_wing }}
+                  strokeColor={{ from: "#FC3C3C", to: "#1CD55A" }}
+                  // strokeColor={[green[5], red[5]]}
+                  showInfo={false}
+                />
+              </div>
             </div>
             <div className={Style.tableRow}>
               <h3>Avg.Winning Trade </h3>

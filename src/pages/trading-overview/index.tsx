@@ -52,18 +52,19 @@ const TradingOverview = () => {
     }
   }, []);
   return (
-    <div style={{ padding: "30px" }}>
+    <>
       {tradingDetails ? (
         <TradingOverviewTable tradingDetails={tradingDetails} />
       ) : (
         <p>Loading...</p>
       )}
+
       {tradingHistory ? (
         <TradingHistoryTable tradingHistory={tradingHistory} />
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </>
   );
 };
 
