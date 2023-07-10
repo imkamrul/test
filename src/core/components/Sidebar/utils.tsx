@@ -4,6 +4,7 @@ import {
   CreditCardOutlined,
   HomeOutlined,
   QuestionCircleOutlined,
+  SafetyCertificateOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
 
@@ -19,6 +20,12 @@ export const MenuList = [
     title: "Billing",
     icon: <CreditCardOutlined />,
     ref: "/billing/my-plan",
+  },
+  {
+    key: "Certificate",
+    title: "Certificate",
+    icon: <SafetyCertificateOutlined />,
+    ref: "/certificate",
   },
   {
     key: "account-overview",
