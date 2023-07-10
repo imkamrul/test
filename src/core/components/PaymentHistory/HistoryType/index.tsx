@@ -1,8 +1,12 @@
 import { Col, Row } from "antd";
-import { useState } from "react";
 import Styles from "./HistoryType.module.scss";
-const HistoryType = () => {
-  const [currentStep, setCurrentStep] = useState("approved");
+
+interface HistoryTypeProps {
+  currentStep: string;
+  setCurrentStep: (currentStep: string) => void;
+}
+
+const HistoryType = ({ currentStep, setCurrentStep }: HistoryTypeProps) => {
   return (
     <>
       <Row align="middle" justify="start">
