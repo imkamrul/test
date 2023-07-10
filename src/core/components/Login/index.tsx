@@ -1,17 +1,32 @@
-import React, { useEffect } from "react";
-import { Input, Button, Checkbox, message, Space } from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Input,
+  Button,
+  Checkbox,
+  Typography,
+  Col,
+  Row,
+  message,
+  Modal,
+  Space,
+} from "antd";
 import { IFormBuilder } from "../Form/Form.types";
 import Form from "../Form";
 import AuthHero from "../AuthHero";
 import Styles from "./Login.module.scss";
-import Link from "next/link";
-import Google from "../icons/Google";
-import Facebook from "../icons/Facebook";
-// import { DownloadOutlined } from "@ant-design/icons";
+import { AllButton } from "./AllButton";
+import { authenticate, setToken, setUseInfo } from "@/services/auth.service";
+import { useRouter } from "next/router";
+const { Title, Paragraph } = Typography;
 
-const Login = () => {
+const Login: React.FC = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
   const loginForm: IFormBuilder = {
     title: "",
+    buttonComponent: <AllButton btnLoading={loading} />,
     layout: "vertical",
     hideFormButtons: true,
     size: "large",
@@ -51,57 +66,44 @@ const Login = () => {
     ],
   };
 
-  const onSubmit = (value: any, form: any) => {
-    console.log(value, form);
+  const onSubmit = async (value: any, form: any) => {
+    setLoading(true);
+    setModalOpen(true);
+
+    const res = await authenticate(value);
+    if (res.data.status == "SUCCESS") {
+      message.success(res.data.message);
+      setUseInfo(JSON.stringify(res.data.data.user));
+      setToken(res.data.data.token.accessToken);
+      setLoading(false);
+      setModalOpen(false);
+      router.push("/home");
+    } else {
+      message.error("can't login");
+    }
   };
 
   return (
     <>
       <AuthHero />
-      <div className={Styles.loginForm}>
-        <div className={Styles.loginHeader}>
-          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680061656/logo-login.svg" />
-        </div>
-        <div className={Styles.loginBody}>
-          <Form loading={false} formBuilder={loginForm} onSubmit={onSubmit} />
-          <div className={Styles.allBtn}>
-            <Button type="primary" block size="large">
-              Log In
-            </Button>
-            <Link href="#">Forget Password?</Link>
-            <Button
-              type="primary"
-              className={Styles.socialBtn}
-              size="large"
-              icon={<Google />}
-            >
-              <span className="ml-3"> Log In with Google</span>
-            </Button>
-            <Button
-              type="primary"
-              className={`${Styles.socialBtn} mt-4`}
-              size="large"
-              icon={<Facebook />}
-            >
-              <span className="ml-3"> Log In with Google</span>
-            </Button>
-            <p className="mt-5">
-              Dont have an account?{" "}
-              <Link href="#" className="ml-2">
-                Register
-              </Link>
-            </p>
+      <Row>
+        <Col lg={10} offset={2} className={Styles.loginForm}>
+          <div className={Styles.loginHeader}>
+            <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680061656/logo-login.svg" />
           </div>
-        </div>
-      </div>
-      <div className={Styles.dashboardTour}>
-        <h3>Wellcome to Exclusive Dashboard Tour</h3>
-        <p>
-          Get access to exclusive tour of our platform within 10 seconds, by
-          simply submitting the following information.
-        </p>
-        <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680066478/demo-dashboard.png" />
-      </div>
+          <div className={Styles.loginBody}>
+            <Form loading={false} formBuilder={loginForm} onSubmit={onSubmit} />
+          </div>
+        </Col>
+        <Col lg={10} offset={2} className={Styles.dashboardTour}>
+          <Title level={3}>Wellcome to Exclusive Dashboard Tour</Title>
+          <Title level={5}>
+            Get access to exclusive tour of our platform within 10 seconds,{" "}
+            <br /> by simply submitting the following information.
+          </Title>
+          <img src="https://res.cloudinary.com/dvzadhnmh/image/upload/v1680066478/demo-dashboard.png" />
+        </Col>
+      </Row>
     </>
   );
 };

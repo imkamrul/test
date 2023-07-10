@@ -1,66 +1,70 @@
 .loginForm {
-  position: absolute;
-  width: 613px;
-  height: 776px;
-  left: 308px;
-  top: 109px;
   background: #ffffff;
   box-shadow: 0px 0px 126.923px rgba(198, 209, 253, 0.3);
   border-radius: 4.23077px;
-}
-.loginHeader {
-  padding: 23px 50px;
-  border-bottom: 1px solid #ededed;
-  & img {
-    width: 192.12px;
-    height: 30px;
+  margin-top: -160px;
+
+  & .loginHeader {
+    padding: 30px 0px 10px 50px;
+    border: 1px solid #ededed;
+  }
+
+  & .loginBody {
+    padding: 23px 50px;
   }
 }
-.loginBody {
-  padding: 23px 50px;
-}
+
 .allBtn {
-  width: 60%;
-  margin: 0 auto;
+  padding: 0px 80px;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  & a {
-    padding: 26px 0px;
-    text-decoration: none;
-  }
-  & p {
-    color: #808285;
-    font-size: 15px;
-  }
+  justify-content: center;
+  align-items: center;
 }
 .socialBtn {
+  width: 100%;
   display: flex;
   justify-content: center;
-  background: #f3f2ff;
-  color: #292d34;
+  align-items: center;
 }
 .dashboardTour {
-  position: absolute;
-  width: 570px;
-  height: 36px;
-  left: 1161px;
-  top: 336px;
-  & h3 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+  padding-top: 60px;
+}
+
+.divider {
+  position: relative;
+  margin: 20px 0px 0px 0px;
+  color: rgba(128, 130, 133, 0.7);
+  font-size: 18px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    width: 130px;
+    height: 1px;
+    background-color: rgba(128, 130, 133, 0.25);
   }
-  & p {
-    margin-top: 14px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
+
+  &::before {
+    left: 30px;
   }
-  & img {
-    margin-top: 70px;
-    margin-left: 170px;
+
+  &::after {
+    right: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboardTour {
+    display: none;
+  }
+  .loginFormForm {
+    margin-left: -10px;
+    margin-top: 10px;
+  }
+  .allBtn {
+    padding: 0px;
   }
 }

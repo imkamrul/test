@@ -67,6 +67,22 @@ const MyApp = ({ Component, pageProps }: Types) => {
       <ConfigProvider
         theme={{
           token: siteTheme,
+          components: {
+            Input: {
+              controlHeightLG: 50,
+            },
+            Select: {
+              controlHeightLG: 50,
+            },
+            Button: {
+              controlHeightLG: 50,
+            },
+            Form: {
+              colorTextLabel: "#595959",
+              fontSize: 16,
+              fontWeightStrong: 600,
+            },
+          },
         }}
       >
         <Provider store={store}>

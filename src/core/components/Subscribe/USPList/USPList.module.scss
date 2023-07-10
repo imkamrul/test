@@ -1,0 +1,24 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.singleUSPCard {
+  @include cardStyle;
+  margin-bottom: 30px;
+  padding: 30px 20px;
+  display: flex;
+  & .icon {
+    width: 60px;
+  }
+  & .contents {
+    width: calc(100% - 60px);
+    padding-left: 10px;
+    & h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: $black;
+      margin-bottom: 20px;
+    }
+    & p {
+      color: $deepGray;
+    }
+  }
+}

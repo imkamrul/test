@@ -1,5 +1,5 @@
 import PageHeader from "@/core/Molicules/PageHeader";
-import { useLocalStorage } from "@/hooks/localstorage.hooks";
+import { getToken } from "@/services/auth.service";
 import { PageHeaderPropTypes } from "@/types/global.types";
 import { Layout } from "antd";
 import { useRouter } from "next/router";
@@ -19,11 +19,10 @@ interface DashboardLayoutPropsTypes {
 
 const Dashboard = (props: DashboardLayoutPropsTypes) => {
   const { children, layoutSettings } = props;
-  console.log("contentWrapperStyle :", layoutSettings?.contentWrapperStyle);
   const [hasMounted, setHasMounted] = useState(false);
   const [routes, setRoutes] = useState<string[]>([]);
   const [hlinks, setHlinks] = useState<string[]>([]);
-
+  const [token, setToken] = useState<string | undefined>(undefined);
   const router = useRouter();
 
   const processBreadcum = () => {
@@ -46,22 +45,14 @@ const Dashboard = (props: DashboardLayoutPropsTypes) => {
     setHlinks(hlink);
   };
 
-  const [profile] = useLocalStorage("profile", null);
-
   useEffect(() => {
-    setHasMounted(true);
-    processBreadcum();
+    let retrievedToken = getToken();
+    if (retrievedToken) {
+      setToken(retrievedToken);
+    } else {
+      router.push("/login");
+    }
   }, []);
-
-  // useEffect(() => {
-  //   if (!profile) {
-  //     router.push('/')
-  //   }
-  // }, [profile])
-
-  // if (!hasMounted || !profile) {
-  //   return null
-  // }
 
   return (
     <Layout>
@@ -71,7 +62,7 @@ const Dashboard = (props: DashboardLayoutPropsTypes) => {
         <Layout.Content
           style={{
             margin: "0",
-            padding: "100px 30px",
+            padding: "100px 0px",
             minHeight: 280,
             background: "transparent",
             ...layoutSettings?.contentWrapperStyle,

@@ -1,0 +1,19 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+.cardWrapper {
+  @include cardStyle;
+  margin-bottom: 30px;
+  & .cardBody {
+    padding: 0 26px;
+  }
+  & .summaryItems {
+    padding: 15px 0;
+    color: $deepGray;
+    border-bottom: 1px solid $lightGray;
+    font-weight: 500;
+    &:last-child {
+      border-bottom: none;
+      color: $black;
+    }
+  }
+}
