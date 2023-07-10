@@ -1,0 +1,87 @@
+.accountInfoContainer {
+  position: relative;
+}
+.accountInfoContainer::after {
+  position: absolute;
+  top: -26px;
+  left: -100px;
+  content: "";
+  background: linear-gradient(
+    75.96deg,
+    #ffc83a 13.64%,
+    #ff008a 46.53%,
+    #6100ff 78.88%
+  );
+  width: 842px;
+  height: 321px;
+
+  opacity: 0.15;
+  filter: blur(63.3255px);
+}
+.borderRight {
+  border-right: 1px solid #e1e1e1;
+}
+.infoWrapper {
+  background: #ffffff;
+  border: 0.66px solid #d2d2d2;
+  box-shadow: 0px 1.99181px 84.6519px rgba(217, 225, 255, 0.59);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  padding: 27px 22px;
+}
+.name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #080663;
+}
+.currentModel {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 150%;
+  color: #080663;
+  padding: 9px 0 16px 0;
+}
+.balancePlan {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 0;
+  & p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #1b1748;
+  }
+}
+.detailsField {
+  display: flex;
+  align-items: center;
+  background: #f9f9ff;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  padding: 12px 22px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+.labelName {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #515151;
+}
+.value {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #515151;
+}
+.dateStyle {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #1b1748;
+  padding-bottom: 25px;
+}
